@@ -39,6 +39,7 @@ PRODUCT_PACKAGES += \
     Profiles \
     WallpaperPicker \
     CMSettingsProvider \
+    CyanogenSetupWizard \
     ExactCalculator \
     HexagonRom \
     Screencast \
