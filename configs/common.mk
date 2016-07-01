@@ -139,6 +139,10 @@ PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/app/Weather.apk:system/app/Weather/Weather.apk \
     vendor/hexagon/prebuilt/common/app/WeatherWidget.apk:system/app/WeatherWidget/WeatherWidget.apk \
 
+#BusyBox
+PRODUCT_COPY_FILES += \
+    vendor/hexagon/prebuilt/BusyBox/busybox:/system/xbin/busybox
+
 # init.d
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/init.local.rc:root/init.hexagon.rc \
