@@ -131,6 +131,14 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
 
+# Sony App
+PRODUCT_COPY_FILES += \
+    vendor/hexagon/prebuilt/common/app/home.apk:system/app/Home/home.apk \
+    vendor/hexagon/prebuilt/common/app/ClockWidgets.apk:system/app/ClockWidgets/ClockWidgets.apk \
+    vendor/hexagon/prebuilt/common/app/WallpaperPicker.apk:system/app/WallpaperPicker/WallpaperPicker.apk \
+    vendor/hexagon/prebuilt/common/app/Weather.apk:system/app/Weather/Weather.apk \
+    vendor/hexagon/prebuilt/common/app/WeatherWidget.apk:system/app/WeatherWidget/WeatherWidget.apk \
+
 # init.d
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/init.local.rc:root/init.hexagon.rc \
@@ -219,10 +227,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.usb.config=mtp,adb
 
 # SuperSU
-#PRODUCT_COPY_FILES += \
-#    vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-#    vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
-
+PRODUCT_COPY_FILES += \
+    vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+    vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
+    vendor/hexagon/prebuilt/common/dolby.zip:system/addon.d/dolby.zip 
 # Copy latinime for gesture typing
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
