@@ -1,8 +1,8 @@
-# Inherit some common AICP stuff.
-$(call inherit-product, vendor/aicp/configs/common_tablet.mk)
+# Inherit some common hexagon stuff.
+$(call inherit-product, vendor/hexagon/configs/common_tablet.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/aicp/configs/nfc_enhanced.mk)
+$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/htc/flounder/aosp_flounder.mk)
@@ -29,13 +29,13 @@ DEVICE_PACKAGE_OVERLAYS += device/htc/flounder/overlay-cm
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := flounder
-PRODUCT_NAME := aicp_flounder
+PRODUCT_NAME := hexagon_flounder
 PRODUCT_BRAND := google
 PRODUCT_MODEL := Nexus 9
 PRODUCT_MANUFACTURER := htc
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DEVICE_MAINTAINERS="Hashbang173"
 
@@ -49,4 +49,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2048
 TARGET_SCREEN_WIDTH := 1536
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

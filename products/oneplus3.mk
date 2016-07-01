@@ -19,13 +19,13 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from oneplus3 device
 $(call inherit-product, device/oneplus/oneplus3/device.mk)
 
-# Inherit some common AICP stuff.
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit some common hexagon stuff.
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-PRODUCT_NAME := aicp_oneplus3
+PRODUCT_NAME := hexagon_oneplus3
 PRODUCT_DEVICE := oneplus3
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_BRAND := OnePlus
@@ -33,11 +33,11 @@ PRODUCT_BRAND := OnePlus
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
         DEVICE_MAINTAINERS="genesixxbf3"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

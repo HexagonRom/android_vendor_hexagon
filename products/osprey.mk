@@ -12,26 +12,26 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-# Inherit AICP common stuff
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit hexagon common stuff
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 $(call inherit-product, device/motorola/osprey/full_osprey.mk)
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
         DEVICE_MAINTAINERS="Shivam D (Flashhhh)"
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 720
 TARGET_SCREEN_HEIGHT := 1280
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := osprey
-PRODUCT_NAME := aicp_osprey
+PRODUCT_NAME := hexagon_osprey
 PRODUCT_BRAND := Motorola
 PRODUCT_MANUFACTURER := Motorola
 PRODUCT_RELEASE_NAME := osprey

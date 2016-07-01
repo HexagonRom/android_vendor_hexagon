@@ -1,10 +1,10 @@
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/aicp/configs/nfc_enhanced.mk)
+$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/htc/m7spr/full_m7spr.mk)
@@ -18,17 +18,17 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Device naming
 PRODUCT_DEVICE := m7spr
-PRODUCT_NAME := aicp_m7spr
+PRODUCT_NAME := hexagon_m7spr
 PRODUCT_BRAND := htc
 PRODUCT_MODEL := HTC One
 PRODUCT_MANUFACTURER := HTC
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Brian L (Chezbel), doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk
 

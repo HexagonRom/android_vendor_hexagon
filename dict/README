@@ -9,9 +9,9 @@ to compile a new dictionary and install it properly example for English:
 
 . build/envsetup.sh && lunch
 makedict_aosp \
-   -c vendor/aicp/dict/en_whitelist.xml \
-   -s vendor/aicp/dict/en_words.xml \
-   -d vendor/aicp/overlay/dictionaries/packages/inputmethods/LatinIME/java/res/raw/main_en.dict \
+   -c vendor/hexagon/dict/en_whitelist.xml \
+   -s vendor/hexagon/dict/en_words.xml \
+   -d vendor/hexagon/overlay/dictionaries/packages/inputmethods/LatinIME/java/res/raw/main_en.dict \
    -3
 
 ###################################################

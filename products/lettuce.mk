@@ -13,10 +13,10 @@
 # limitations under the License.
 
 # Inherit some common ACIP stuff.
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Inherit device specific stuff
 $(call inherit-product, device/yu/lettuce/full_lettuce.mk)
@@ -24,7 +24,7 @@ $(call inherit-product, device/yu/lettuce/full_lettuce.mk)
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8916
 
-PRODUCT_NAME := aicp_lettuce
+PRODUCT_NAME := hexagon_lettuce
 BOARD_VENDOR := yu
 PRODUCT_DEVICE := lettuce
 
@@ -38,11 +38,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=YU/YUPHORIA/YUPHORIA:5.1.1/LMY49J/YOG4PAS8A8:user/release-keys \
     PRIVATE_BUILD_DESC="YUPHORIA-user 5.1.1 LMY49J YOG4PAS8A8 release-keys"
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Parth B (TheStrix)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

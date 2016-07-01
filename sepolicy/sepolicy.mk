@@ -4,4 +4,4 @@
 #
 
 BOARD_SEPOLICY_DIRS += \
-    vendor/aicp/sepolicy
+    vendor/hexagon/sepolicy

@@ -1,3 +1,3 @@
 # Inherit common CM stuff
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 

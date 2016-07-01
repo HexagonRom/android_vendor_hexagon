@@ -2,17 +2,17 @@
 PRODUCT_RELEASE_NAME := t0lteatt
 
 # Inherit common product files.
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/t0lteatt/full_t0lteatt.mk)
 
 # Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := t0lteatt
-PRODUCT_NAME := aicp_t0lteatt
+PRODUCT_NAME := hexagon_t0lteatt
 PRODUCT_BRAND := samsung
 PRODUCT_MODEL := SAMSUNG-SGH-I317
 PRODUCT_MANUFACTURER := samsung
@@ -24,4 +24,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=t0lteatt TARGET_DEVICE=t0lteatt BUI
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

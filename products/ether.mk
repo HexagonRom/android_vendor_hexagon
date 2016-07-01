@@ -5,21 +5,21 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
 # Inherit from our custom product configuration
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/nextbit/ether/device.mk)
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_NAME := aicp_ether
+PRODUCT_NAME := hexagon_ether
 BOARD_VENDOR := nextbit
 TARGET_VENDOR := nextbit
 PRODUCT_DEVICE := ether
 
-# AICP Device Info
+# hexagon Device Info
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DEVICE_MAINTAINERS="Sean Hoyt (Deadman96385)"
 
@@ -34,4 +34,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

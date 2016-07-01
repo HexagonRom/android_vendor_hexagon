@@ -1,7 +1,7 @@
 [gerrit]
 host=gerrit.aicp-rom.com
 port=29418
-project=AICP/vendor_aicp
-defaultbranch=lp5.1
+project=android_vendor_hexagon
+defaultbranch=mm
 defaultremote=review
 defaultrebase=0

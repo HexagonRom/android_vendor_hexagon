@@ -1,13 +1,13 @@
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/aicp/configs/nfc_enhanced.mk)
+$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
 
 $(call inherit-product, device/oppo/find7s/full_find7s.mk)
 
 
-PRODUCT_NAME := aicp_find7s
+PRODUCT_NAME := hexagon_find7s
 PRODUCT_DEVICE := find7s
 PRODUCT_BRAND := Oppo
 PRODUCT_MODEL := Find7
@@ -20,4 +20,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

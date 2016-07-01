@@ -1,10 +1,10 @@
-$(call inherit-product, vendor/aicp/configs/common.mk)
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/aicp/configs/nfc_enhanced.mk)
+$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
 $(call inherit-product, device/htc/jewel/jewel.mk)
 
@@ -13,7 +13,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=jewel BUILD_ID=JSS15Q BUILD_FINGERP
 
 # Device naming
 PRODUCT_DEVICE := jewel
-PRODUCT_NAME := aicp_jewel
+PRODUCT_NAME := hexagon_jewel
 PRODUCT_BRAND := htc
 PRODUCT_MODEL := EVO
 PRODUCT_MANUFACTURER := HTC
@@ -24,4 +24,4 @@ PRODUCT_RELEASE_NAME := jewel
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

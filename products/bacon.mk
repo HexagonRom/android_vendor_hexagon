@@ -19,16 +19,16 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/oneplus/bacon/bacon.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Enhanced NFC
-$(call inherit-product, vendor/aicp/configs/nfc_enhanced.mk)
+$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
-# Inherit some common AICP stuff
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit some common hexagon stuff
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Device identifier. This must come after all inclusions
-PRODUCT_NAME := aicp_bacon
+PRODUCT_NAME := hexagon_bacon
 PRODUCT_DEVICE := bacon
 PRODUCT_MANUFACTURER := OnePlus
 PRODUCT_MODEL := A0001
@@ -46,11 +46,11 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=oneplus/bacon/A0001:6.0.1/MMB29X/ZNH0EAS2JK:user/release-keys \
     PRIVATE_BUILD_DESC="bacon-user 6.0.1 MMB29X ZNH0EAS2JK release-keys"
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Davor B (LorD CloCKaN), doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

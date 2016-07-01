@@ -19,11 +19,11 @@
 $(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Inherit some common AICP stuff.
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit some common hexagon stuff.
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Inherit from kenzo device
 $(call inherit-product, device/xiaomi/kenzo/device.mk)
@@ -32,14 +32,14 @@ $(call inherit-product, device/xiaomi/kenzo/device.mk)
 BOARD_VENDOR := Xiaomi
 PRODUCT_BRAND := Xiaomi
 PRODUCT_DEVICE := kenzo
-PRODUCT_NAME := aicp_kenzo
+PRODUCT_NAME := hexagon_kenzo
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_MODEL := Redmi Note 3
 TARGET_VENDOR := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
         DEVICE_MAINTAINERS="Vatsal K (Vatsal)"
 

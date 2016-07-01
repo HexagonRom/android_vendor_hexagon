@@ -13,11 +13,11 @@
 # limitations under the License.
 
 
-# Inherit some common AICP stuff
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit some common hexagon stuff
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
@@ -26,7 +26,7 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 $(call inherit-product, device/xiaomi/dior/full_dior.mk)
 
 
-PRODUCT_NAME := aicp_dior
+PRODUCT_NAME := hexagon_dior
 PRODUCT_DEVICE := dior
 PRODUCT_BRAND := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
@@ -38,12 +38,12 @@ PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=dior PRODUCT_NAME=dior
 
 TARGET_CONTINUOUS_SPLASH_ENABLED := true
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="audahadi/msfkonsole"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
 TARGET_SCREEN_WIDTH := 720
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk
 

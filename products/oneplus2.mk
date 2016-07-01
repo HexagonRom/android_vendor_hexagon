@@ -14,17 +14,17 @@
 
 $(call inherit-product, device/oneplus/oneplus2/full_oneplus2.mk)
 
-# Inherit some common AICP stuff.
-$(call inherit-product, vendor/aicp/configs/common.mk)
+# Inherit some common hexagon stuff.
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
-$(call inherit-product, vendor/aicp/configs/telephony.mk)
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Trafalgar Square"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

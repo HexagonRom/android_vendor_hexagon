@@ -1,2 +1,2 @@
 BOARD_SEPOLICY_DIRS += \
-    vendor/aicp/sepolicy/qcom
+    vendor/hexagon/sepolicy/qcom

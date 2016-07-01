@@ -13,17 +13,17 @@
 # limitations under the License.
 
 # Inherit device configuration for Kindle Fire
-$(call inherit-product, device/amazon/otter-common/aicp.mk)
+$(call inherit-product, device/amazon/otter-common/hexagon.mk)
 $(call inherit-product, device/amazon/otterx/full_otterx.mk)
 
-PRODUCT_NAME := aicp_otterx
+PRODUCT_NAME := hexagon_otterx
 PRODUCT_RELEASE_NAME := KFire
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Joshua G (Hashbang173)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1024_otterx
 TARGET_SCREEN_WIDTH := 600
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk

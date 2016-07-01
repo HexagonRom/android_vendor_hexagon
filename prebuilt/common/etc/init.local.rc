@@ -1,4 +1,4 @@
-# AICP Extras
+# Hexagon rom
 import /init.superuser.rc
 
 on init
