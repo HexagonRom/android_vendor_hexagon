@@ -29,7 +29,6 @@ PRODUCT_PACKAGES += \
 # HEXAGON packages
 PRODUCT_PACKAGES += \
     PhotoPhase \
-    Trebuchet \
     Eleven \
     Development \
     LockClock \
