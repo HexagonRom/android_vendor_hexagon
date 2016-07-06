@@ -24,7 +24,7 @@ ifdef HEXAGON_BUILDTYPE
     ifeq ($(HEXAGON_BUILDTYPE), RELEASE)
        HEXAGON_VERSION := HexagonROM--V$(VERSION)-$(HEXAGON_BRANCH)-$(HEXAGON_BUILD)-RELEASE-$(shell date -u +%Y-%m-%d)
     endif
-    ifeq ($(HEXAGON_BUILDTYPE), NIGHTLY)
+    ifeq ($(HEXAGON_BUILDTYPE), OFFICIAL)
         HEXAGON_VERSION := HexagonROM--V$(VERSION)-$(HEXAGON_BRANCH)-$(HEXAGON_BUILD)-OFFICIAL-$(shell date -u +%Y-%m-%d)
     endif
     ifeq ($(HEXAGON_BUILDTYPE), EXPERIMENTAL)
