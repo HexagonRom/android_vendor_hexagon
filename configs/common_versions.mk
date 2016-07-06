@@ -16,7 +16,7 @@ ifndef HEXAGON_BUILDTYPE
         RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^HEXAGON_||g')
         HEXAGON_BUILDTYPE := $(RELEASE_TYPE)
     else
-        HEXAGON_BUILDTYPE := NIGHTLY
+        HEXAGON_BUILDTYPE := OFFICIAL
     endif
 endif
 
@@ -25,7 +25,7 @@ ifdef HEXAGON_BUILDTYPE
        HEXAGON_VERSION := HexagonROM--V$(VERSION)-$(HEXAGON_BRANCH)-$(HEXAGON_BUILD)-RELEASE-$(shell date -u +%Y-%m-%d)
     endif
     ifeq ($(HEXAGON_BUILDTYPE), NIGHTLY)
-        HEXAGON_VERSION := HexagonROM--V$(VERSION)-$(HEXAGON_BRANCH)-$(HEXAGON_BUILD)-NIGHTLY-$(shell date -u +%Y-%m-%d)
+        HEXAGON_VERSION := HexagonROM--V$(VERSION)-$(HEXAGON_BRANCH)-$(HEXAGON_BUILD)-OFFICIAL-$(shell date -u +%Y-%m-%d)
     endif
     ifeq ($(HEXAGON_BUILDTYPE), EXPERIMENTAL)
         HEXAGON_VERSION := HexagonROM--V$(VERSION)-$(HEXAGON_BRANCH)-$(HEXAGON_BUILD)-EXPERIMENTAL-$(shell date -u +%Y-%m-%d)
