@@ -22,7 +22,7 @@ $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Trafalgar Square"
+	DEVICE_MAINTAINERS="RajGopi"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
