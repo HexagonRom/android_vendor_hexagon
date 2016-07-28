@@ -39,7 +39,7 @@ TARGET_VENDOR_PRODUCT_NAME := onyx
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS="Vatsal K (Vatsal)"
+        DEVICE_MAINTAINERS="Abhinai sanka"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
