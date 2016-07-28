@@ -41,7 +41,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS="Vatsal K (Vatsal)"
+        DEVICE_MAINTAINERS="Rakesh Batra"
 
 # Use the latest approved GMS identifiers unless running a signed build
 ifneq ($(SIGN_BUILD),true)
