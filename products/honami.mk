@@ -7,7 +7,7 @@ $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 # Enhanced NFC
 $(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
-$(call inherit-product, device/sony/honami/hexagon.mk)
+$(call inherit-product, device/sony/honami/full_honami.mk)
 
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=C6903
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_FINGERPRINT=Sony/C6903/C6903:5.0.2/14.5.A.0.270/3750474323:user/release-keys
