@@ -43,7 +43,7 @@ endif
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS="Sanyam Jain (Men_in_black007)"
+        DEVICE_MAINTAINERS="Sushant More"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
