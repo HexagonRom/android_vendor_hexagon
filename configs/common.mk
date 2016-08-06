@@ -1,10 +1,10 @@
 SUPERUSER_EMBEDDED := true
 
 # Common overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/hexagon/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/aicp/overlay/common
 
 # Common dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/aicp/overlay/dictionaries
 
 PRODUCT_PACKAGES += \
     BluetoothExt \
@@ -30,6 +30,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     PhotoPhase \
     Eleven \
+    CMAudioService \
     Development \
     LockClock \
     AudioFX \
@@ -44,7 +45,8 @@ PRODUCT_PACKAGES += \
     HexagonRom \
     Screencast \
     LiveLockScreenService \
-    DataUsageProvider
+    DataUsageProvider \
+    ThemeManagerService
 
 # Exchange support
 PRODUCT_PACKAGES += \

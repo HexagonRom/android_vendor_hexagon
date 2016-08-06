@@ -27,6 +27,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/g2m.mk \
     $(LOCAL_DIR)/geehrc.mk \
     $(LOCAL_DIR)/grouper.mk \
+    $(LOCAL_DIR)/h811.mk \
     $(LOCAL_DIR)/h815.mk \
     $(LOCAL_DIR)/hammerhead.mk \
     $(LOCAL_DIR)/hammerheadcaf.mk \
@@ -67,7 +68,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/shieldtablet.mk \
     $(LOCAL_DIR)/sprout4.mk \
     $(LOCAL_DIR)/surnia.mk \
-    $(LOCAL_DIR)/sambar.mk \
+    $(LOCAL_DIR)/T00F.mk \
     $(LOCAL_DIR)/thea.mk \
     $(LOCAL_DIR)/t0lte.mk \
     $(LOCAL_DIR)/tomato.mk \

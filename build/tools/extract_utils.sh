@@ -19,7 +19,13 @@ PRODUCT_COPY_FILES_LIST=()
 PRODUCT_PACKAGES_LIST=()
 PACKAGE_LIST=()
 VENDOR_STATE=-1
+VENDOR_RADIO_STATE=-1
 COMMON=-1
+ARCHES=
+FULLY_DEODEXED=-1
+
+TMPDIR="/tmp/extractfiles.$$"
+mkdir "$TMPDIR"
 
 #
 # setup_vendor
@@ -69,8 +75,10 @@ function setup_vendor() {
 
     if [ "$5" == "true" ] || [ "$5" == "1" ]; then
         VENDOR_STATE=1
+        VENDOR_RADIO_STATE=1
     else
         VENDOR_STATE=0
+        VENDOR_RADIO_STATE=0
     fi
 }
 
@@ -165,9 +173,8 @@ function write_product_copy_files() {
 #
 # $1: The LOCAL_MODULE_CLASS for the given module list
 # $2: "true" if this package is part of the vendor/ path
-# $3: "true" if this is a privileged module (only valid for APPS)
-# $4: The multilib mode, "32", "64", "both", or "none"
-# $5: Name of the array holding the target list
+# $3: type-specific extra flags
+# $4: Name of the array holding the target list
 #
 # Internal function which writes out the BUILD_PREBUILT stanzas
 # for all modules in the list. This is called by write_product_packages
@@ -177,11 +184,10 @@ function write_packages() {
 
     local CLASS="$1"
     local VENDOR_PKG="$2"
-    local PRIVILEGED="$3"
-    local MULTILIB="$4"
+    local EXTRA="$3"
 
     # Yes, this is a horrible hack - we create a new array using indirection
-    local ARR_NAME="$5[@]"
+    local ARR_NAME="$4[@]"
     local FILELIST=("${!ARR_NAME}")
 
     local FILE=
@@ -211,7 +217,7 @@ function write_packages() {
         printf 'LOCAL_MODULE := %s\n' "$PKGNAME"
         printf 'LOCAL_MODULE_OWNER := %s\n' "$VENDOR"
         if [ "$CLASS" = "SHARED_LIBRARIES" ]; then
-            if [ "$MULTILIB" = "both" ]; then
+            if [ "$EXTRA" = "both" ]; then
                 printf 'LOCAL_SRC_FILES_64 := %s/lib64/%s\n' "$SRC" "$FILE"
                 printf 'LOCAL_SRC_FILES_32 := %s/lib/%s\n' "$SRC" "$FILE"
                 #if [ "$VENDOR_PKG" = "true" ]; then
@@ -221,21 +227,19 @@ function write_packages() {
                 #    echo "LOCAL_MODULE_PATH_64 := \$(TARGET_OUT_SHARED_LIBRARIES)"
                 #    echo "LOCAL_MODULE_PATH_32 := \$(2ND_TARGET_OUT_SHARED_LIBRARIES)"
                 #fi
-            elif [ "$MULTILIB" = "64" ]; then
+            elif [ "$EXTRA" = "64" ]; then
                 printf 'LOCAL_SRC_FILES := %s/lib64/%s\n' "$SRC" "$FILE"
             else
                 printf 'LOCAL_SRC_FILES := %s/lib/%s\n' "$SRC" "$FILE"
             fi
-            if [ "$MULTILIB" != "none" ]; then
-                printf 'LOCAL_MULTILIB := %s\n' "$MULTILIB"
+            if [ "$EXTRA" != "none" ]; then
+                printf 'LOCAL_MULTILIB := %s\n' "$EXTRA"
             fi
         elif [ "$CLASS" = "APPS" ]; then
-            if [ -z "$ARGS" ]; then
-                if [ "$PRIVILEGED" = "true" ]; then
-                    SRC="$SRC/priv-app"
-                else
-                    SRC="$SRC/app"
-                fi
+            if [ "$EXTRA" = "priv-app" ]; then
+                SRC="$SRC/priv-app"
+            else
+                SRC="$SRC/app"
             fi
             printf 'LOCAL_SRC_FILES := %s/%s\n' "$SRC" "$FILE"
             local CERT=platform
@@ -248,14 +252,27 @@ function write_packages() {
         elif [ "$CLASS" = "ETC" ]; then
             printf 'LOCAL_SRC_FILES := %s/etc/%s\n' "$SRC" "$FILE"
         elif [ "$CLASS" = "EXECUTABLES" ]; then
-            printf 'LOCAL_SRC_FILES := %s/bin/%s\n' "$SRC" "$FILE"
+            if [ "$ARGS" = "rootfs" ]; then
+                SRC="$SRC/rootfs"
+                if [ "$EXTRA" = "sbin" ]; then
+                    SRC="$SRC/sbin"
+                    printf '%s\n' "LOCAL_MODULE_PATH := \$(TARGET_ROOT_OUT_SBIN)"
+                    printf '%s\n' "LOCAL_UNSTRIPPED_PATH := \$(TARGET_ROOT_OUT_SBIN_UNSTRIPPED)"
+                fi
+            else
+                SRC="$SRC/bin"
+            fi
+            printf 'LOCAL_SRC_FILES := %s/%s\n' "$SRC" "$FILE"
+            unset EXTENSION
         else
-            printf 'LOCAL_SRC_FILES := %s/%s' "$SRC" "$FILE"
+            printf 'LOCAL_SRC_FILES := %s/%s\n' "$SRC" "$FILE"
         fi
         printf 'LOCAL_MODULE_TAGS := optional\n'
         printf 'LOCAL_MODULE_CLASS := %s\n' "$CLASS"
-        printf 'LOCAL_MODULE_SUFFIX := .%s\n' "$EXTENSION"
-        if [ "$PRIVILEGED" = "true" ]; then
+        if [ ! -z "$EXTENSION" ]; then
+            printf 'LOCAL_MODULE_SUFFIX := .%s\n' "$EXTENSION"
+        fi
+        if [ "$EXTRA" = "priv-app" ]; then
             printf 'LOCAL_PRIVILEGED_MODULE := true\n'
         fi
         if [ "$VENDOR_PKG" = "true" ]; then
@@ -288,77 +305,82 @@ function write_product_packages() {
     local T_LIB64=( $(prefix_match "lib64/") )
     local MULTILIBS=( $(comm -12 <(printf '%s\n' "${T_LIB32[@]}") <(printf '%s\n' "${T_LIB64[@]}")) )
     local LIB32=( $(comm -23 <(printf '%s\n'  "${T_LIB32[@]}") <(printf '%s\n' "${MULTILIBS[@]}")) )
-    local LIB64=( $(comm -13 <(printf '%s\n' "${T_LIB64[@]}") <(printf '%s\n' "${MULTILIBS[@]}")) )
+    local LIB64=( $(comm -23 <(printf '%s\n' "${T_LIB64[@]}") <(printf '%s\n' "${MULTILIBS[@]}")) )
 
     if [ "${#MULTILIBS[@]}" -gt "0" ]; then
-        write_packages "SHARED_LIBRARIES" "false" "false" "both" "MULTILIBS" >> "$ANDROIDMK"
+        write_packages "SHARED_LIBRARIES" "false" "both" "MULTILIBS" >> "$ANDROIDMK"
     fi
     if [ "${#LIB32[@]}" -gt "0" ]; then
-        write_packages "SHARED_LIBRARIES" "false" "false" "32" "LIB32" >> "$ANDROIDMK"
+        write_packages "SHARED_LIBRARIES" "false" "32" "LIB32" >> "$ANDROIDMK"
     fi
-    if [ ! "${#LIB64[@]}" -gt "0" ]; then
-        write_packages "SHARED_LIBRARIES" "false" "false" "64" "LIB64" >> "$ANDROIDMK"
+    if [ "${#LIB64[@]}" -gt "0" ]; then
+        write_packages "SHARED_LIBRARIES" "false" "64" "LIB64" >> "$ANDROIDMK"
     fi
 
     local T_V_LIB32=( $(prefix_match "vendor/lib/") )
     local T_V_LIB64=( $(prefix_match "vendor/lib64/") )
     local V_MULTILIBS=( $(comm -12 <(printf '%s\n' "${T_V_LIB32[@]}") <(printf '%s\n' "${T_V_LIB64[@]}")) )
     local V_LIB32=( $(comm -23 <(printf '%s\n' "${T_V_LIB32[@]}") <(printf '%s\n' "${V_MULTILIBS[@]}")) )
-    local V_LIB64=( $(comm -13 <(printf '%s\n' "${T_V_LIB64[@]}") <(printf '%s\n' "${V_MULTILIBS[@]}")) )
+    local V_LIB64=( $(comm -23 <(printf '%s\n' "${T_V_LIB64[@]}") <(printf '%s\n' "${V_MULTILIBS[@]}")) )
 
     if [ "${#V_MULTILIBS[@]}" -gt "0" ]; then
-        write_packages "SHARED_LIBRARIES" "true" "false" "both" "V_MULTILIBS" >> "$ANDROIDMK"
+        write_packages "SHARED_LIBRARIES" "true" "both" "V_MULTILIBS" >> "$ANDROIDMK"
     fi
     if [ "${#V_LIB32[@]}" -gt "0" ]; then
-        write_packages "SHARED_LIBRARIES" "true" "false" "32" "V_LIB32" >> "$ANDROIDMK"
+        write_packages "SHARED_LIBRARIES" "true" "32" "V_LIB32" >> "$ANDROIDMK"
     fi
     if [ "${#V_LIB64[@]}" -gt "0" ]; then
-        write_packages "SHARED_LIBRARIES" "true" "false" "64" "V_LIB64" >> "$ANDROIDMK"
+        write_packages "SHARED_LIBRARIES" "true" "64" "V_LIB64" >> "$ANDROIDMK"
     fi
 
     # Apps
     local APPS=( $(prefix_match "app/") )
     if [ "${#APPS[@]}" -gt "0" ]; then
-        write_packages "APPS" "false" "false" "none" "APPS" >> "$ANDROIDMK"
+        write_packages "APPS" "false" "" "APPS" >> "$ANDROIDMK"
     fi
     local PRIV_APPS=( $(prefix_match "priv-app/") )
     if [ "${#PRIV_APPS[@]}" -gt "0" ]; then
-        write_packages "APPS" "false" "true" "none" "PRIV_APPS" >> "$ANDROIDMK"
+        write_packages "APPS" "false" "priv-app" "PRIV_APPS" >> "$ANDROIDMK"
     fi
     local V_APPS=( $(prefix_match "vendor/app/") )
     if [ "${#V_APPS[@]}" -gt "0" ]; then
-        write_packages "APPS" "true" "false" "none" "V_APPS" >> "$ANDROIDMK"
+        write_packages "APPS" "true" "" "V_APPS" >> "$ANDROIDMK"
     fi
     local V_PRIV_APPS=( $(prefix_match "vendor/priv-app/") )
     if [ "${#V_PRIV_APPS[@]}" -gt "0" ]; then
-        write_packages "APPS" "true" "true" "none" "V_PRIV_APPS" >> "$ANDROIDMK"
+        write_packages "APPS" "true" "priv-app" "V_PRIV_APPS" >> "$ANDROIDMK"
     fi
 
     # Framework
     local FRAMEWORK=( $(prefix_match "framework/") )
     if [ "${#FRAMEWORK[@]}" -gt "0" ]; then
-        write_packages "JAVA_LIBRARIES" "false" "false" "none" "FRAMEWORK" >> "$ANDROIDMK"
+        write_packages "JAVA_LIBRARIES" "false" "" "FRAMEWORK" >> "$ANDROIDMK"
     fi
 
     # Etc
     local ETC=( $(prefix_match "etc/") )
     if [ "${#ETC[@]}" -gt "0" ]; then
-        write_packages "ETC" "false" "false" "none" "ETC" >> "$ANDROIDMK"
+        write_packages "ETC" "false" "" "ETC" >> "$ANDROIDMK"
     fi
     local V_ETC=( $(prefix_match "vendor/etc/") )
     if [ "${#V_ETC[@]}" -gt "0" ]; then
-        write_packages "ETC" "true" "false" "none" "V_ETC" >> "$ANDROIDMK"
+        write_packages "ETC" "false" "" "V_ETC" >> "$ANDROIDMK"
     fi
 
     # Executables
     local BIN=( $(prefix_match "bin/") )
     if [ "${#BIN[@]}" -gt "0"  ]; then
-        write_packages "EXECUTABLES" "false" "false" "none" "BIN" >> "$ANDROIDMK"
+        write_packages "EXECUTABLES" "false" "" "BIN" >> "$ANDROIDMK"
     fi
     local V_BIN=( $(prefix_match "vendor/bin/") )
     if [ "${#V_BIN[@]}" -gt "0" ]; then
-        write_packages "EXECUTABLES" "true" "false" "none" "V_BIN" >> "$ANDROIDMK"
+        write_packages "EXECUTABLES" "true" "" "V_BIN" >> "$ANDROIDMK"
     fi
+    local SBIN=( $(prefix_match "sbin/") )
+    if [ "${#SBIN[@]}" -gt "0" ]; then
+        write_packages "EXECUTABLES" "false" "sbin" "SBIN" >> "$ANDROIDMK"
+    fi
+
 
     # Actually write out the final PRODUCT_PACKAGES list
     local PACKAGE_COUNT=${#PACKAGE_LIST[@]}
@@ -472,11 +494,18 @@ function _adb_connected {
 };
 
 #
-# parse_file_list
+# parse_file_list:
+#
+# $1: input file
+#
+# Sets PRODUCT_PACKAGES and PRODUCT_COPY_FILES while parsing the input file
 #
 function parse_file_list() {
-    if [ ! -e "$1" ]; then
-        echo "$1 does not exist!"
+    if [ -z "$1" ]; then
+        echo "An input file is expected!"
+        exit 1
+    elif [ ! -f "$1" ]; then
+        echo "Input file "$1" does not exist!"
         exit 1
     fi
 
@@ -506,13 +535,114 @@ function parse_file_list() {
 # the product makefile.
 #
 function write_makefiles() {
-    if [ ! -e "$1" ]; then
-        echo "$1 does not exist!"
-        exit 1
-    fi
     parse_file_list "$1"
     write_product_copy_files
     write_product_packages
+}
+
+#
+# append_firmware_calls_to_makefiles:
+#
+# Appends to Android.mk the calls to all images present in radio folder
+# (filesmap file used by releasetools to map firmware images should be kept in the device tree)
+#
+function append_firmware_calls_to_makefiles() {
+    cat << EOF >> "$ANDROIDMK"
+ifeq (\$(LOCAL_PATH)/radio, \$(wildcard \$(LOCAL_PATH)/radio))
+
+RADIO_FILES := \$(wildcard \$(LOCAL_PATH)/radio/*)
+\$(foreach f, \$(notdir \$(RADIO_FILES)), \\
+    \$(call add-radio-file,radio/\$(f)))
+\$(call add-radio-file,../../../device/$VENDOR/$DEVICE/radio/filesmap)
+
+endif
+
+EOF
+}
+
+#
+# get_file:
+#
+# $1: input file
+# $2: target file/folder
+# $3: source of the file (can be "adb" or a local folder)
+#
+# Silently extracts the input file to defined target
+# Returns success if file can be pulled from the device or found locally
+#
+function get_file() {
+    local SRC="$3"
+
+    if [ "$SRC" = "adb" ]; then
+        # try to pull
+        adb pull "$1" "$2" >/dev/null 2>&1 && return 0
+
+        return 1
+    else
+        # try to copy
+        cp "$SRC/$1" "$2" 2>/dev/null && return 0
+
+        return 1
+    fi
+};
+
+#
+# oat2dex:
+#
+# $1: extracted apk|jar (to check if deodex is required)
+# $2: odexed apk|jar to deodex
+# $3: source of the odexed apk|jar
+#
+# Convert apk|jar .odex in the corresposing classes.dex
+#
+function oat2dex() {
+    local CM_TARGET="$1"
+    local OEM_TARGET="$2"
+    local SRC="$3"
+    local TARGET=
+    local OAT=
+
+    if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
+        export BAKSMALIJAR="$CM_ROOT"/vendor/cm/build/tools/smali/baksmali.jar
+        export SMALIJAR="$CM_ROOT"/vendor/cm/build/tools/smali/smali.jar
+    fi
+
+    # Extract existing boot.oats to the temp folder
+    if [ -z "$ARCHES" ]; then
+        echo "Checking if system is odexed and extracting boot.oats, if applicable. This may take a while..."
+        for ARCH in "arm64" "arm" "x86_64" "x86"; do
+            if get_file "system/framework/$ARCH/boot.oat" "$TMPDIR/boot_$ARCH.oat" "$SRC"; then
+                ARCHES+="$ARCH "
+            fi
+        done
+    fi
+
+    if [ -z "$ARCHES" ]; then
+        FULLY_DEODEXED=1 && return 0 # system is fully deodexed, return
+    fi
+
+    if grep "classes.dex" "$CM_TARGET" >/dev/null; then
+        return 0 # target apk|jar is already odexed, return
+    fi
+
+    for ARCH in $ARCHES; do
+        BOOTOAT="$TMPDIR/boot_$ARCH.oat"
+
+        local OAT="$(dirname "$OEM_TARGET")/oat/$ARCH/$(basename "$OEM_TARGET" ."${OEM_TARGET##*.}").odex"
+
+        if get_file "$OAT" "$TMPDIR" "$SRC"; then
+            java -jar "$BAKSMALIJAR" -x -o "$TMPDIR/dexout" -c "$BOOTOAT" -d "$TMPDIR" "$TMPDIR/$(basename "$OAT")"
+        elif [[ "$CM_TARGET" =~ .jar$ ]]; then
+            # try to extract classes.dex from boot.oat for framework jars
+            java -jar "$BAKSMALIJAR" -x -o "$TMPDIR/dexout" -c "$BOOTOAT" -d "$TMPDIR" -e "/$OEM_TARGET" "$BOOTOAT"
+        else
+            continue
+        fi
+
+        java -jar "$SMALIJAR" "$TMPDIR/dexout" -o "$TMPDIR/classes.dex" && break
+    done
+
+    rm -rf "$TMPDIR/dexout"
 }
 
 #
@@ -546,17 +676,27 @@ function init_adb_connection() {
 }
 
 #
+# fix_xml:
+#
+# $1: xml file to fix
+#
+function fix_xml() {
+    local XML="$1"
+    local TEMP_XML="$TMPDIR/`basename "$XML"`.temp"
+
+    grep '^<?xml version' "$XML" > "$TEMP_XML"
+    grep -v '^<?xml version' "$XML" >> "$TEMP_XML"
+
+    mv "$TEMP_XML" "$XML"
+}
+
+#
 # extract:
 #
 # $1: file containing the list of items to extract
 # $2: path to extracted system folder, or "adb" to extract from device
 #
 function extract() {
-    if [ ! -e "$1" ]; then
-        echo "$1 does not exist!"
-        exit 1
-    fi
-
     if [ -z "$OUTDIR" ]; then
         echo "Output dir not set!"
         exit 1
@@ -569,58 +709,129 @@ function extract() {
 
     local FILELIST=( ${PRODUCT_COPY_FILES_LIST[@]} ${PRODUCT_PACKAGES_LIST[@]} )
     local COUNT=${#FILELIST[@]}
-    local FILE=
-    local DEST=
     local SRC="$2"
-    local OUTPUT_DIR="$CM_ROOT"/"$OUTDIR"/proprietary
-    local DIR=
-
+    local OUTPUT_ROOT="$CM_ROOT"/"$OUTDIR"/proprietary
     if [ "$SRC" = "adb" ]; then
         init_adb_connection
     fi
 
     if [ "$VENDOR_STATE" -eq "0" ]; then
-        echo "Cleaning output directory ($OUTPUT_DIR).."
-        rm -rf "${OUTPUT_DIR:?}/"*
+        echo "Cleaning output directory ($OUTPUT_ROOT).."
+        rm -rf "${OUTPUT_ROOT:?}/"*
         VENDOR_STATE=1
     fi
 
     echo "Extracting $COUNT files in $1 from $SRC:"
 
     for (( i=1; i<COUNT+1; i++ )); do
+
+        local FROM=$(target_file "${FILELIST[$i-1]}")
+        local ARGS=$(target_args "${FILELIST[$i-1]}")
         local SPLIT=(${FILELIST[$i-1]//:/ })
         local FILE="${SPLIT[0]#-}"
-        local DEST="${SPLIT[1]}"
-        if [ -z "$DEST" ]; then
-            DEST="$FILE"
-        fi
-        if [ "$SRC" = "adb" ]; then
-            printf '  - %s .. ' "/system/$FILE"
+        local OUTPUT_DIR="$OUTPUT_ROOT"
+        local TARGET=
+
+        if [ "$ARGS" = "rootfs" ]; then
+            TARGET="$FROM"
+            OUTPUT_DIR="$OUTPUT_DIR/rootfs"
         else
-            printf '  - %s \n' "/system/$FILE"
+            TARGET="system/$FROM"
+            FILE="system/$FILE"
         fi
-        DIR=$(dirname "$DEST")
+
+        if [ "$SRC" = "adb" ]; then
+            printf '  - %s .. ' "/$TARGET"
+        else
+            printf '  - %s \n' "/$TARGET"
+        fi
+
+        local DIR=$(dirname "$FROM")
         if [ ! -d "$OUTPUT_DIR/$DIR" ]; then
             mkdir -p "$OUTPUT_DIR/$DIR"
         fi
+        local DEST="$OUTPUT_DIR/$FROM"
+
         if [ "$SRC" = "adb" ]; then
             # Try CM target first
-            adb pull "/system/$DEST" "$OUTPUT_DIR/$DEST"
+            adb pull "/$TARGET" "$DEST"
             # if file does not exist try OEM target
             if [ "$?" != "0" ]; then
-                adb pull "/system/$FILE" "$OUTPUT_DIR/$DEST"
+                adb pull "/$FILE" "$DEST"
             fi
         else
             # Try OEM target first
-            cp "$SRC/system/$FILE" "$OUTPUT_DIR/$DEST"
+            cp "$SRC/$FILE" "$DEST"
             # if file does not exist try CM target
             if [ "$?" != "0" ]; then
-                cp "$SRC/system/$DEST" "$OUTPUT_DIR/$DEST"
+                cp "$SRC/$TARGET" "$DEST"
             fi
         fi
-        chmod 644 "$OUTPUT_DIR/$DEST"
+
+        if [ "$?" == "0" ]; then
+            # Deodex apk|jar if that's the case
+            if [[ "$FULLY_DEODEXED" -ne "1" && "$DEST" =~ .(apk|jar)$ ]]; then
+                oat2dex "$DEST" "$FILE" "$SRC"
+                if [ -f "$TMPDIR/classes.dex" ]; then
+                    zip -gjq "$DEST" "$TMPDIR/classes.dex"
+                    rm "$TMPDIR/classes.dex"
+                    printf '    (updated %s from odex files)\n' "/$FILE"
+                fi
+            elif [[ "$DEST" =~ .xml$ ]]; then
+                fix_xml "$DEST"
+            fi
+        fi
+
+        local TYPE="${DIR##*/}"
+        if [ "$TYPE" = "bin" -o "$TYPE" = "sbin" ]; then
+            chmod 755 "$DEST"
+        else
+            chmod 644 "$DEST"
+        fi
     done
 
     # Don't allow failing
     set -e
+}
+
+#
+# extract_firmware:
+#
+# $1: file containing the list of items to extract
+# $2: path to extracted radio folder
+#
+function extract_firmware() {
+    if [ -z "$OUTDIR" ]; then
+        echo "Output dir not set!"
+        exit 1
+    fi
+
+    parse_file_list "$1"
+
+    # Don't allow failing
+    set -e
+
+    local FILELIST=( ${PRODUCT_COPY_FILES_LIST[@]} )
+    local COUNT=${#FILELIST[@]}
+    local SRC="$2"
+    local OUTPUT_DIR="$CM_ROOT"/"$OUTDIR"/radio
+
+    if [ "$VENDOR_RADIO_STATE" -eq "0" ]; then
+        echo "Cleaning firmware output directory ($OUTPUT_DIR).."
+        rm -rf "${OUTPUT_DIR:?}/"*
+        VENDOR_RADIO_STATE=1
+    fi
+
+    echo "Extracting $COUNT files in $1 from $SRC:"
+
+    for (( i=1; i<COUNT+1; i++ )); do
+        local FILE="${FILELIST[$i-1]}"
+        printf '  - %s \n' "/radio/$FILE"
+
+        if [ ! -d "$OUTPUT_DIR" ]; then
+            mkdir -p "$OUTPUT_DIR"
+        fi
+        cp "$SRC/$FILE" "$OUTPUT_DIR/$FILE"
+        chmod 644 "$OUTPUT_DIR/$FILE"
+    done
 }
