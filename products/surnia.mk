@@ -41,4 +41,4 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # Copy bootanimation for surnia
 PRODUCT_COPY_FILES +=  \
-    vendor/aicp/prebuilt/bootanimation/bootanimation_540_960.zip:system/media/bootanimation.zip
+    vendor/hexagon/prebuilt/bootanimation/bootanimation_540_960.zip:system/media/bootanimation.zip

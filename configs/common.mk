@@ -1,10 +1,10 @@
 SUPERUSER_EMBEDDED := true
 
 # Common overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/aicp/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/hexagon/overlay/common
 
 # Common dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/aicp/overlay/dictionaries
+PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
 
 PRODUCT_PACKAGES += \
     BluetoothExt \

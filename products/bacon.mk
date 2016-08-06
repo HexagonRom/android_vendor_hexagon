@@ -47,7 +47,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=oneplus/bacon/A0001:6.0.1/MMB29X/ZNH0EAS2JK:user/release-keys \
     PRIVATE_BUILD_DESC="bacon-user 6.0.1 MMB29X ZNH0EAS2JK release-keys"
 
-# AICP Device Maintainers
+# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Renosang - DroidVn-Team"
 
