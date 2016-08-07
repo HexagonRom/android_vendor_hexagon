@@ -34,6 +34,7 @@ PRODUCT_PACKAGES += \
     Development \
     LockClock \
     AudioFX \
+	HexagonUI \
     PhotoPhase \
     CMFileManager \
     OmniSwitch \
