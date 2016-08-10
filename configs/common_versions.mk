@@ -23,20 +23,20 @@ endif
 
 ifdef HEXAGON_BUILDTYPE
     ifeq ($(HEXAGON_BUILDTYPE), RELEASE)
-       HEXAGON_VERSION := $(HEX)-V$(VERSION)-$(HEXAGON_BRANCH)-RELEASE-$(shell date -u +%Y%m%d)
+       HEXAGON_VERSION := $(HEX)-$(HEXAGON_BUILD)-V$(VERSION)-$(HEXAGON_BRANCH)-RELEASE-$(shell date -u +%Y%m%d)
     endif
     ifeq ($(HEXAGON_BUILDTYPE), OFFICIAL)
-        HEXAGON_VERSION := $(HEX)-V$(VERSION)-$(HEXAGON_BRANCH)-OFFICIAL-$(shell date -u +%Y%m%d)
+        HEXAGON_VERSION := $(HEX)-$(HEXAGON_BUILD)-V$(VERSION)-$(HEXAGON_BRANCH)-OFFICIAL-$(shell date -u +%Y%m%d)
     endif
     ifeq ($(HEXAGON_BUILDTYPE), EXPERIMENTAL)
-        HEXAGON_VERSION := $(HEX)-V$(VERSION)-$(HEXAGON_BRANCH)-EXPERIMENTAL-$(shell date -u +%Y%m%d)
+        HEXAGON_VERSION := $(HEX)-$(HEXAGON_BUILD)-V$(VERSION)-$(HEXAGON_BRANCH)-EXPERIMENTAL-$(shell date -u +%Y%m%d)
     endif
     ifeq ($(HEXAGON_BUILDTYPE), UNOFFICIAL)
-        HEXAGON_VERSION := $(HEX)-V$(VERSION)-$(HEXAGON_BRANCH)-UNOFFICIAL-$(shell date -u +%Y%m%d)
+        HEXAGON_VERSION := $(HEX)-$(HEXAGON_BUILD)-V$(VERSION)-$(HEXAGON_BRANCH)-UNOFFICIAL-$(shell date -u +%Y%m%d)
     endif
 else
 #We reset back to UNOFFICIAL
-        HEXAGON_VERSION := $(HEX)-V$(VERSION)-$(HEXAGON_BRANCH)-UNOFFICIAL-$(shell date -u +%Y%m%d)
+        HEXAGON_VERSION := $(HEX)-$(HEXAGON_BUILD)-V$(VERSION)-$(HEXAGON_BRANCH)-UNOFFICIAL-$(shell date -u +%Y%m%d)
 endif
 
 
