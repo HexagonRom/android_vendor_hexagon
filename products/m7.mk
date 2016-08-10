@@ -31,9 +31,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_ID=LMY47O.H18 \
     PRIVATE_BUILD_DESC="6.04.1700.18 CL536258 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    DEVICE_MAINTAINERS="Brian L (Chezbel), doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

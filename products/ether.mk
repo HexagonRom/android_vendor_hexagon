@@ -19,9 +19,7 @@ BOARD_VENDOR := nextbit
 TARGET_VENDOR := nextbit
 PRODUCT_DEVICE := ether
 
-# hexagon Device Info
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    DEVICE_MAINTAINERS="Sean Hoyt (Deadman96385)"
+
 
 PRODUCT_BRAND := Nextbit
 PRODUCT_MODEL := Robin

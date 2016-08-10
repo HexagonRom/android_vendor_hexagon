@@ -21,9 +21,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="samsung/ja3gxx/ja3g:5.0.1/LRX22C/I9500XXUHOG1:user/release-keys" \
     PRIVATE_BUILD_DESC="ja3gxx-user 5.0.1 LRX22C I9500XXUHOG1 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

@@ -11,9 +11,6 @@ $(call inherit-product, device/samsung/kltespr/full_kltespr.mk)
 PRODUCT_DEVICE := kltespr
 PRODUCT_NAME := hexagon_kltespr
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Alex S (OptX), doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

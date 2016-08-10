@@ -30,9 +30,6 @@ PRODUCT_DEVICE := wt88047
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Saket Sawrav (I-m-mortal)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280

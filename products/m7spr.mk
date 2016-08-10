@@ -23,9 +23,6 @@ PRODUCT_BRAND := htc
 PRODUCT_MODEL := HTC One
 PRODUCT_MANUFACTURER := HTC
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Brian L (Chezbel), doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

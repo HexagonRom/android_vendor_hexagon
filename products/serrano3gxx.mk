@@ -16,9 +16,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_DEVICE := serrano3gxx
 PRODUCT_NAME := hexagon_serrano3gxx
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 960

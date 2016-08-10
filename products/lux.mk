@@ -33,9 +33,6 @@ PRODUCT_RELEASE_NAME := lux
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME="Moto X Play"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-    DEVICE_MAINTAINERS="Nick van Bokhorst (GtrCraft)"
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080

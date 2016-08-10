@@ -18,10 +18,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-verizon
 PRODUCT_NAME := hexagon_jfltevzw
 PRODUCT_DEVICE := jfltevzw
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-  DEVICE_MAINTAINERS="doc HD (semdoc)"
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080

@@ -17,9 +17,6 @@ PRODUCT_MODEL := A1
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_DEVICE="sprout4"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Parth B (TheStrix)"
 
 # Boot Animation
 TARGET_SCREEN_HEIGHT := 854

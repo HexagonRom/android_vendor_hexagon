@@ -13,9 +13,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_NAME := hexagon_wx_na_wf
 PRODUCT_DEVICE := wx_na_wf
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="vinman07a"
 
 # Bootanimation
 TARGET_SCREEN_HEIGHT := 1920

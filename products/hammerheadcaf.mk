@@ -23,9 +23,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=google/hammerhead/hammerhead:6.0.1/MOB30Y/3067468:user/release-keys \
     PRIVATE_BUILD_DESC="hammerhead-user 6.0.1 MOB30Y 3067468 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Raienryu, Davor B (LorD CloCKaN)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

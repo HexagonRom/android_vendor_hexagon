@@ -12,9 +12,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=serranodsxx TARGET_DEVICE=serranods
 PRODUCT_DEVICE := serranodsdd
 PRODUCT_NAME := hexagon_serranodsdd
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Silviu Avram (Silviumik)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 960

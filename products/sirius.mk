@@ -18,9 +18,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += PRIVATE_BUILD_DESC="D6503-user 5.1.1 23.4.A.0.54
 PRODUCT_NAME := hexagon_sirius
 PRODUCT_DEVICE := sirius
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

@@ -17,9 +17,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="htc/himaulatt_na_gen_unlock/htc_himaulatt:6.0/MRA58K/669696.12:user/release-keys" \
     PRIVATE_BUILD_DESC="3.35.617.12 CL669696 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Ali B (eyosen), Brian L (chezbel)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

@@ -24,9 +24,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="lge/g3_tmo_us/g3:6.0/MRA58K/1609517159bca:user/release-keys" \
     PRIVATE_BUILD_DESC="g3_tmo_us-user 6.0 MRA58K 1609517159bca release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 2560

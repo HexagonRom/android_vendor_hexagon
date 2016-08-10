@@ -22,9 +22,6 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 #Set build fingerprint / ID / Product Name ect.
 PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=nakasi BUILD_FINGERPRINT="google/nakasi/grouper:6.0/MRA58K/10120636:user/release-keys" PRIVATE_BUILD_DESC="nakasi-user 6.0 MRA58K 10120636 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Hector C (zipsnet), doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280

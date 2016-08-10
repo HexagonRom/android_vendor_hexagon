@@ -7,9 +7,6 @@ $(call inherit-product, device/nvidia/shieldtablet/full_shieldtablet.mk)
 PRODUCT_NAME := hexagon_shieldtablet
 PRODUCT_DEVICE := shieldtablet
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Trafalgar Square"
 
 # Bootanimation
 TARGET_SCREEN_HEIGHT := 1920

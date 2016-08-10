@@ -34,7 +34,7 @@ PRODUCT_PACKAGES += \
     Development \
     LockClock \
     AudioFX \
-	HexagonUI \
+    HexagonUI \
     PhotoPhase \
     CMFileManager \
     OmniSwitch \
@@ -53,7 +53,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Exchange2
 
-# Extra tools in HEXAGON
+# Extra tools in AICP
 PRODUCT_PACKAGES += \
     7z \
     lib7z \
@@ -231,17 +231,13 @@ PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallp
 # CMSDK
 include vendor/hexagon/configs/cmsdk_common.mk
 
-# Debuggable by default
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.service.adb.enable=1 \
-    persist.service.debuggable=1 \
-    persist.sys.usb.config=mtp,adb
 
 # SuperSU
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
     vendor/hexagon/prebuilt/common/dolby.zip:system/addon.d/dolby.zip 
+
 # Copy latinime for gesture typing
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so

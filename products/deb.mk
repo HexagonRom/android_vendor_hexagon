@@ -25,12 +25,9 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 #Set build fingerprint / ID / Product Name ect.
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=razorg \
-    BUILD_FINGERPRINT=google/razorg/deb:6.0.1/MOB30P/2960889:user/release-keys \
-    PRIVATE_BUILD_DESC="razorg-user 6.0.1 MOB30P 2960889 release-keys"
+    BUILD_FINGERPRINT=google/razorg/deb:6.0.1/MOB30X/3036618:user/release-keys \
+    PRIVATE_BUILD_DESC="razorg-user 6.0.1 MOB30X 3036618 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc), Ali B (eyosen)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

@@ -11,10 +11,6 @@ PRODUCT_NAME := hexagon_otus
 
 PRODUCT_GMS_CLIENTID_BASE := android-motorola
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Trafalgar Square"
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 960
 TARGET_SCREEN_WIDTH := 540

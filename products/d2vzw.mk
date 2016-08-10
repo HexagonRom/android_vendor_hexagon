@@ -15,9 +15,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 PRODUCT_GMS_CLIENTID_BASE := android-verizon
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 PRODUCT_NAME := hexagon_d2vzw
 PRODUCT_DEVICE := d2vzw

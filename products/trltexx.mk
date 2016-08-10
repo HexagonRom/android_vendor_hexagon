@@ -33,9 +33,6 @@ PRODUCT_NAME := hexagon_trltexx
 PRODUCT_BRAND := samsung
 PRODUCT_MANUFACTURER := samsung
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Hector C (zipsnet), doc HD (semdoc)"
 
 #Bootanimation
 TARGET_SCREEN_HEIGHT := 2560

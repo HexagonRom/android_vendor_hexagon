@@ -19,9 +19,6 @@ $(call inherit-product, device/amazon/otterx/full_otterx.mk)
 PRODUCT_NAME := hexagon_otterx
 PRODUCT_RELEASE_NAME := KFire
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Joshua G (Hashbang173)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1024_otterx

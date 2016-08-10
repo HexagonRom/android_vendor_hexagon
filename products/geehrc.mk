@@ -1,4 +1,4 @@
-# Inherit hexagon common bits
+# Inherit AICP common bits
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
@@ -19,15 +19,11 @@ PRODUCT_MANUFACTURER := LGE
 PRODUCT_RESTRICT_VENDOR_FILES := false
 
 
-# hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
         PRODUCT_NAME=geehrc_open_eu \
         BUILD_FINGERPRINT=lge/geehrc_open_eu/geehrc:4.4.2/KOT49I.E97520a/E97520a.1403273885:user/release-keys \
         PRIVATE_BUILD_DESC="geehrc_open_eu-user 4.4.2 KOT49I.E97520a E97520a.1403273885 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS=""
 
 
 # Boot animation

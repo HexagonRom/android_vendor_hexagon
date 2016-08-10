@@ -28,9 +28,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=google/razorg/deb:6.0.1/MMB29Q/2480792:user/release-keys \
     PRIVATE_BUILD_DESC="razorg-user 6.0.1 MMB29Q 2480792 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc), Ali B (eyosen)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

@@ -20,7 +20,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/e980.mk \
     $(LOCAL_DIR)/endeavoru.mk \
     $(LOCAL_DIR)/ether.mk \
-    $(LOCAL_DIR)/ef63s.mk \
     $(LOCAL_DIR)/falcon.mk \
     $(LOCAL_DIR)/flounder.mk \
     $(LOCAL_DIR)/fugu.mk \

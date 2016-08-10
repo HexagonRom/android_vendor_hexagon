@@ -35,9 +35,6 @@ PRODUCT_CHARACTERISTICS := phone
 # Release name
 PRODUCT_RELEASE_NAME := Xperiam
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 854

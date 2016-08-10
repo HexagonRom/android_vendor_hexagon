@@ -20,9 +20,6 @@ PRODUCT_GMS_CLIENTID_BASE := android-samsung
 PRODUCT_NAME := hexagon_jfltespr
 PRODUCT_DEVICE := jfltespr
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-  DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

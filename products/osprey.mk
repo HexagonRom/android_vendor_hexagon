@@ -20,9 +20,6 @@ $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 $(call inherit-product, device/motorola/osprey/full_osprey.mk)
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS="Shivam D (Flashhhh)"
 
 # Boot animation
 TARGET_SCREEN_WIDTH := 720

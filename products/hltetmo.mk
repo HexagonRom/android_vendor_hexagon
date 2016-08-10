@@ -12,9 +12,6 @@ $(call inherit-product, device/samsung/hltetmo/full_hltetmo.mk)
 PRODUCT_DEVICE := hltetmo
 PRODUCT_NAME := hexagon_hltetmo
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

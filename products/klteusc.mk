@@ -12,10 +12,6 @@ $(call inherit-product, device/samsung/klteusc/full_klteusc.mk)
 PRODUCT_DEVICE := klteusc
 PRODUCT_NAME := hexagon_klteusc
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Alex S (OptX), doc HD (semdoc)"
-
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080

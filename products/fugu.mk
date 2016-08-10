@@ -21,9 +21,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=google/fugu/fugu:6.0.1/MOB30G/2723637:user/release-keys \
     PRIVATE_BUILD_DESC="fugu-user 6.0.1 MOB30G 2723637 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS="Hector C (Zips)"
 
 
 # Boot animation

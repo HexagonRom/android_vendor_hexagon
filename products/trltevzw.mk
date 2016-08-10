@@ -33,9 +33,6 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT="samsung/trltevzw/trltevzw:4.4.4/KTU84P/N910VVRU1ANJ5:user/release-keys" \
     PRIVATE_BUILD_DESC="trltevzw-user 4.4.4 KTU84P N910VVRU1ANJ5 release-keys"
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="doc HD (semdoc)"
 
 #Bootanimation
 TARGET_SCREEN_HEIGHT := 2560

@@ -16,9 +16,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 PRODUCT_NAME := hexagon_jfltetmo
 PRODUCT_DEVICE := jfltetmo
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-  DEVICE_MAINTAINERS="doc HD (semdoc)"
+
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920

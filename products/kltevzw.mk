@@ -11,9 +11,6 @@ $(call inherit-product, device/samsung/kltevzw/full_kltevzw.mk)
 PRODUCT_DEVICE := kltevzw
 PRODUCT_NAME := hexagon_kltevzw
 
-# hexagon Device Maintainers
-PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Alex S (OptX), doc HD (semdoc)"
 
 
 # Boot animation

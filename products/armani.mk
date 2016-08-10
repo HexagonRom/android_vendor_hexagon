@@ -1,4 +1,4 @@
-# Inherit some common hexagon stuff
+# Inherit some common AICP stuff
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
@@ -23,7 +23,7 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=armani
 
-# hexagon Device Maintainers
+# AICP Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
 	DEVICE_MAINTAINERS="Parth B (TheStrix)"
 
