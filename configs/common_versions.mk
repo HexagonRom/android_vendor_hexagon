@@ -1,10 +1,10 @@
 # Version information used on all builds
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys USER=android-build BUILD_UTC_DATE=$(shell date +"%s")
 
-DATE = $(shell vendor/aicp/tools/getdate)
+DATE = $(shell vendor/hexagon/tools/getdate)
 HEXAGON_BRANCH=mm
 
-# AICP RELEASE VERSION
+# Hexagon RELEASE VERSION
 HEXAGON_VERSION_MAJOR = 1
 HEXAGON_VERSION_MINOR = 4
 HEXAGON_VERSION_MAINTENANCE =
@@ -43,13 +43,13 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(HEXAGON_VERSION) \
-    ro.aicp.version=$(VERSION)-$(HEXAGON_BUILDTYPE)
+    ro.hexagon.version=$(VERSION)-$(HEXAGON_BUILDTYPE)
 
 # needed for statistics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hexagon.branch=$(HEXAGON_BRANCH) \
-    ro.romstats.url=http://stats.aicp-rom.com/ \
-    ro.romstats.name=AICP \
+    ro.download.url=http://download.droidvn.com/ \
+    ro.hex.name=Hexagon Rom \
     ro.romstats.buildtype=$(HEXAGON_BUILDTYPE) \
     ro.romstats.version=$(VERSION) \
     ro.romstats.tframe=1 \
