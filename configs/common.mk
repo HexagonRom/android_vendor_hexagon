@@ -10,6 +10,7 @@ PRODUCT_PACKAGES += \
     BluetoothExt \
     libemoji \
     LatinImeDictionaryPack \
+    LatinIME \
     su \
     procmem \
     procrank \
@@ -20,7 +21,9 @@ PRODUCT_PACKAGES += \
     LiveWallpapersPicker \
     MagicSmokeWallpapers \
     VisualizationWallpapers \
-    BasicDreams
+    BasicDreams \
+    WeatherManagerService \
+    Browser2
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
@@ -28,6 +31,7 @@ PRODUCT_PACKAGES += \
 
 # HEXAGON packages
 PRODUCT_PACKAGES += \
+    CMParts \
     PhotoPhase \
     Eleven \
     CMAudioService \
@@ -46,8 +50,7 @@ PRODUCT_PACKAGES += \
     HexagonRom \
     Screencast \
     LiveLockScreenService \
-    DataUsageProvider \
-    ThemeManagerService
+    WeatherProvider
 
 # Exchange support
 PRODUCT_PACKAGES += \
@@ -69,9 +72,13 @@ PRODUCT_PACKAGES += \
 
 # DU Utils Library
 PRODUCT_PACKAGES += \
+    HexoLibre
+
+# DU Utils Library
+#PRODUCT_PACKAGES += \
     org.dirtyunicorns.utils
 
-PRODUCT_BOOT_JARS += \
+#PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
 
 # Stagefright FFMPEG plugin
@@ -106,11 +113,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
-
-# Default Vietnamese Lang
-PRODUCT_PROPERTY_OVERRIDES += \
-	ro.product.locale.language=vi
-	ro.product.locale.region=VN
 
 # Thank you, please drive thru!
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -191,6 +193,16 @@ PRODUCT_PACKAGES += \
     strace \
     pigz
 
+# Custom off-mode charger
+ifneq ($(WITH_CM_CHARGER),false)
+PRODUCT_PACKAGES += \
+    charger_res_images \
+    cm_charger_res_images \
+    font_log.png \
+    libhealthd.cm
+endif
+
+# ExFAT support
 WITH_EXFAT ?= true
 ifeq ($(WITH_EXFAT),true)
 TARGET_USES_EXFAT := true
@@ -224,13 +236,15 @@ PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallp
 
 # Inherit common build.prop overrides
 -include vendor/hexagon/configs/common_versions.mk
+-include vendor/hexagon/config/partner_gms.mk
 
 # Theme engine
 -include vendor/hexagon/configs/themes_common.mk
 
+ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
 include vendor/hexagon/configs/cmsdk_common.mk
-
+endif
 
 # SuperSU
 PRODUCT_COPY_FILES += \
@@ -239,8 +253,8 @@ PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/dolby.zip:system/addon.d/dolby.zip 
 
 # Copy latinime for gesture typing
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
+#PRODUCT_COPY_FILES += \
+#    vendor/hexagon/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
 
 # Kernel Adiutor App
 PRODUCT_COPY_FILES += \
