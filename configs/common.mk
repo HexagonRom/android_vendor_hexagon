@@ -100,12 +100,15 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
+    keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.error.receiver.system.apps=com.google.android.feedback \
     ro.com.google.locationfeatures=1 \
     ro.setupwizard.enterprise_mode=1 \
+    ro.com.android.dateformat=MM-dd-yyyy \
+    ro.com.android.dataroaming=false
     ro.kernel.android.checkjni=0 \
     persist.sys.root_access=3 \
     ro.setupwizard.network_required=false \
@@ -191,7 +194,18 @@ PRODUCT_PACKAGES += \
     oprofiled \
     sqlite3 \
     strace \
-    pigz
+    pigz \
+    7z \
+    lib7z \
+    bash \
+    bzip2 \
+    curl \
+    powertop \
+    unrar \
+    unzip \
+    vim \
+    wget \
+    zip
 
 # Custom off-mode charger
 ifneq ($(WITH_CM_CHARGER),false)
@@ -225,6 +239,16 @@ PRODUCT_PACKAGES += \
 # rsync
 PRODUCT_PACKAGES += \
     rsync
+
+# Stagefright FFMPEG plugin
+PRODUCT_PACKAGES += \
+    libffmpeg_extractor \
+    libffmpeg_omx \
+    media_codecs_ffmpeg.xml
+
+PRODUCT_PROPERTY_OVERRIDES += \
+    media.sf.omx-plugin=libffmpeg_omx.so \
+    media.sf.extractor-plugin=libffmpeg_extractor.so
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \

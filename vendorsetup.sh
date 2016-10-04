@@ -1,4 +1,4 @@
-for combo in $(curl -s  https://raw.githubusercontent.com/AICP/vendor_jenkins/mm6.0/aicp-{Sunday,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,nightly}-targets | sed -e 's/#.*$//' | grep mm6.0 | awk {'print $2'})
+for combo in $(curl -s https://raw.githubusercontent.com/CyanogenMod/hudson/master/cm-build-targets | sed -e 's/#.*$//' | grep cm-14.0 | awk '{printf "cm_%s-%s\n", $1, $2}')
 do
     add_lunch_combo $combo
 done
