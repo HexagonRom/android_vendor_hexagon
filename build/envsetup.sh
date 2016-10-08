@@ -63,7 +63,7 @@ function breakfast()
             if [ -z "$variant" ]; then
                 variant="userdebug"
             fi
-            lunch Hexagon_$target-$variant
+            lunch hexagon_$target-$variant
         fi
     fi
     return $?
