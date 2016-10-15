@@ -48,6 +48,7 @@ trap cleanup EXIT INT TERM ERR
 # $3: CM root directory
 # $4: is common device - optional, default to false
 # $5: cleanup - optional, default to true
+# $6: custom vendor makefile name - optional, default to false
 #
 # Must be called before any other functions can be used. This
 # sets up the internal state for a new vendor configuration.
@@ -76,7 +77,12 @@ function setup_vendor() {
         mkdir -p "$CM_ROOT/$OUTDIR"
     fi
 
-    export PRODUCTMK="$CM_ROOT"/"$OUTDIR"/"$DEVICE"-vendor.mk
+    VNDNAME="$6"
+    if [ -z "$VNDNAME" ]; then
+        VNDNAME="$DEVICE"
+    fi
+
+    export PRODUCTMK="$CM_ROOT"/"$OUTDIR"/"$VNDNAME"-vendor.mk
     export ANDROIDMK="$CM_ROOT"/"$OUTDIR"/Android.mk
     export BOARDMK="$CM_ROOT"/"$OUTDIR"/BoardConfigVendor.mk
 
@@ -249,10 +255,12 @@ function write_packages() {
                 printf 'LOCAL_MULTILIB := %s\n' "$EXTRA"
             fi
         elif [ "$CLASS" = "APPS" ]; then
-            if [ "$EXTRA" = "priv-app" ]; then
-                SRC="$SRC/priv-app"
-            else
-                SRC="$SRC/app"
+            if [ -z "$ARGS" ]; then
+                if [ "$EXTRA" = "priv-app" ]; then
+                    SRC="$SRC/priv-app"
+                else
+                    SRC="$SRC/app"
+                fi
             fi
             printf 'LOCAL_SRC_FILES := %s/%s\n' "$SRC" "$FILE"
             local CERT=platform
@@ -453,6 +461,7 @@ EOF
 # write_headers:
 #
 # $1: devices falling under common to be added to guard - optional
+# $2: custom guard - optional
 #
 # Calls write_header for each of the makefiles and creates
 # the initial path declaration and device guard for the
@@ -460,13 +469,19 @@ EOF
 #
 function write_headers() {
     write_header "$ANDROIDMK"
+
+    GUARD="$2"
+    if [ -z "$GUARD" ]; then
+        GUARD="TARGET_DEVICE"
+    fi
+
     cat << EOF >> "$ANDROIDMK"
 LOCAL_PATH := \$(call my-dir)
 
 EOF
     if [ "$COMMON" -ne 1 ]; then
         cat << EOF >> "$ANDROIDMK"
-ifeq (\$(TARGET_DEVICE),$DEVICE)
+ifeq (\$($GUARD),$DEVICE)
 
 EOF
     else
@@ -475,7 +490,7 @@ EOF
             exit 1
         fi
         cat << EOF >> "$ANDROIDMK"
-ifneq (\$(filter $1,\$(TARGET_DEVICE)),)
+ifneq (\$(filter $1,\$($GUARD)),)
 
 EOF
     fi
@@ -610,7 +625,7 @@ function get_file() {
         return 1
     else
         # try to copy
-        cp "$SRC/$1" "$2" 2>/dev/null && return 0
+        cp -r "$SRC/$1" "$2" 2>/dev/null && return 0
 
         return 1
     fi
@@ -639,10 +654,13 @@ function oat2dex() {
 
     # Extract existing boot.oats to the temp folder
     if [ -z "$ARCHES" ]; then
-        echo "Checking if system is odexed and extracting boot.oats, if applicable. This may take a while..."
+        echo "Checking if system is odexed and locating boot.oats..."
         for ARCH in "arm64" "arm" "x86_64" "x86"; do
-            if get_file "system/framework/$ARCH/boot.oat" "$TMPDIR/boot_$ARCH.oat" "$SRC"; then
+            mkdir -p "$TMPDIR/system/framework/$ARCH"
+            if get_file "system/framework/$ARCH/" "$TMPDIR/system/framework/" "$SRC"; then
                 ARCHES+="$ARCH "
+            else
+                rmdir "$TMPDIR/system/framework/$ARCH"
             fi
         done
     fi
@@ -660,20 +678,20 @@ function oat2dex() {
     fi
 
     for ARCH in $ARCHES; do
-        BOOTOAT="$TMPDIR/boot_$ARCH.oat"
+        BOOTOAT="$TMPDIR/system/framework/$ARCH/boot.oat"
 
         local OAT="$(dirname "$OEM_TARGET")/oat/$ARCH/$(basename "$OEM_TARGET" ."${OEM_TARGET##*.}").odex"
 
         if get_file "$OAT" "$TMPDIR" "$SRC"; then
-            java -jar "$BAKSMALIJAR" -x -o "$TMPDIR/dexout" -c "$BOOTOAT" -d "$TMPDIR" "$TMPDIR/$(basename "$OAT")"
+            java -jar "$BAKSMALIJAR" deodex -o "$TMPDIR/dexout" -b "$BOOTOAT" -d "$TMPDIR" "$TMPDIR/$(basename "$OAT")"
         elif [[ "$CM_TARGET" =~ .jar$ ]]; then
             # try to extract classes.dex from boot.oat for framework jars
-            java -jar "$BAKSMALIJAR" -x -o "$TMPDIR/dexout" -c "$BOOTOAT" -d "$TMPDIR" -e "/$OEM_TARGET" "$BOOTOAT"
+            java -jar "$BAKSMALIJAR" deodex -o "$TMPDIR/dexout" -b "$BOOTOAT" -d "$TMPDIR" -e "/$OEM_TARGET" "$BOOTOAT"
         else
             continue
         fi
 
-        java -jar "$SMALIJAR" "$TMPDIR/dexout" -o "$TMPDIR/classes.dex" && break
+        java -jar "$SMALIJAR" assemble "$TMPDIR/dexout" -o "$TMPDIR/classes.dex" && break
     done
 
     rm -rf "$TMPDIR/dexout"
