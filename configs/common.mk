@@ -8,22 +8,17 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
 
 PRODUCT_PACKAGES += \
     BluetoothExt \
+    CMAudioService \
+    CMParts \
+    Development \
+    Profiles \
+    WeatherManagerService
+
+# Optional CM packages
+PRODUCT_PACKAGES += \
     libemoji \
-    LatinImeDictionaryPack \
-    LatinIME \
-    su \
-    procmem \
-    procrank \
-    Superuser \
-    Torch \
-    librs_jni \
-    LiveWallpapers \
     LiveWallpapersPicker \
-    MagicSmokeWallpapers \
-    VisualizationWallpapers \
-    BasicDreams \
-    WeatherManagerService \
-    Browser2
+    PhotoTable
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
@@ -31,55 +26,101 @@ PRODUCT_PACKAGES += \
 
 # HEXAGON packages
 PRODUCT_PACKAGES += \
-    CMParts \
-    PhotoPhase \
-    Eleven \
-    CMAudioService \
-    Development \
-    LockClock \
     AudioFX \
     HexagonUI \
-    PhotoPhase \
     CMFileManager \
-    OmniSwitch \
-    Profiles \
-    WallpaperPicker \
     CMSettingsProvider \
     CyanogenSetupWizard \
     ExactCalculator \
     HexagonRom \
-    Screencast \
+    Eleven
     LiveLockScreenService \
-    WeatherProvider
+    LockClock \
+    Screencast \
+    SoundRecorder \
+    Trebuchet \
+    WallpaperPicker \
+    WeatherProvider \
+    BasicDreams \
+    Browser2 \
+    LatinImeDictionaryPack \
+    LatinIME \
+    librs_jni \
+    LiveWallpapers \
+    MagicSmokeWallpapers \
+    OmniSwitch \
+    PhotoPhase \
+    procmem \
+    procrank \
+    su \
+    Superuser \
+    Torch \
+    VisualizationWallpapers
 
 # Exchange support
 PRODUCT_PACKAGES += \
     Exchange2
 
-# Extra tools in AICP
+# Extra tools
 PRODUCT_PACKAGES += \
     7z \
     lib7z \
     bash \
     bzip2 \
     curl \
+    fsck.ntfs \
+    gdbserver \
+    htop \
+    lib7z \
+    libsepol \
+    micro_bench \
+    mke2fs \
+    mkfs.ntfs \
+    mount.ntfs \
+    oprofiled \
+    pigz \
     powertop \
+    sqlite3 \
+    strace \
+    tune2fs \
     unrar \
     unzip \
     vim \
     wget \
     zip
 
-# DU Utils Library
+# Custom off-mode charger
+ifneq ($(WITH_CM_CHARGER),false)
 PRODUCT_PACKAGES += \
-    HexoLibre
+    charger_res_images \
+    cm_charger_res_images \
+    font_log.png \
+    libhealthd.cm
+endif
 
-# DU Utils Library
-#PRODUCT_PACKAGES += \
-    org.dirtyunicorns.utils
+# ExFAT support
+WITH_EXFAT ?= true
+ifeq ($(WITH_EXFAT),true)
+TARGET_USES_EXFAT := true
+PRODUCT_PACKAGES += \
+    mount.exfat \
+    fsck.exfat \
+    mkfs.exfat
+endif
 
-#PRODUCT_BOOT_JARS += \
-    org.dirtyunicorns.utils
+# Openssh
+PRODUCT_PACKAGES += \
+    scp \
+    sftp \
+    ssh \
+    sshd \
+    sshd_config \
+    ssh-keygen \
+    start-ssh
+
+# rsync
+PRODUCT_PACKAGES += \
+    rsync
 
 # Stagefright FFMPEG plugin
 PRODUCT_PACKAGES += \
@@ -90,6 +131,24 @@ PRODUCT_PACKAGES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
+
+# Telephony
+PRODUCT_PACKAGES += \
+    telephony-ext
+
+PRODUCT_BOOT_JARS += \
+    telephony-ext
+
+# Themes
+PRODUCT_PACKAGES += \
+    HexoLibre
+
+#DU Utils Library
+PRODUCT_PACKAGES += \
+    org.dirtyunicorns.utils
+
+PRODUCT_BOOT_JARS += \
+    org.dirtyunicorns.utils
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -178,77 +237,6 @@ PRODUCT_COPY_FILES += \
 # Enable wireless Xbox 360 controller support
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
-
-# CM Platform Library
-PRODUCT_PACKAGES += \
-    libsepol \
-    mke2fs \
-    tune2fs \
-    nano \
-    htop \
-    mkfs.ntfs \
-    fsck.ntfs \
-    mount.ntfs \
-    gdbserver \
-    micro_bench \
-    oprofiled \
-    sqlite3 \
-    strace \
-    pigz \
-    7z \
-    lib7z \
-    bash \
-    bzip2 \
-    curl \
-    powertop \
-    unrar \
-    unzip \
-    vim \
-    wget \
-    zip
-
-# Custom off-mode charger
-ifneq ($(WITH_CM_CHARGER),false)
-PRODUCT_PACKAGES += \
-    charger_res_images \
-    cm_charger_res_images \
-    font_log.png \
-    libhealthd.cm
-endif
-
-# ExFAT support
-WITH_EXFAT ?= true
-ifeq ($(WITH_EXFAT),true)
-TARGET_USES_EXFAT := true
-PRODUCT_PACKAGES += \
-    mount.exfat \
-    fsck.exfat \
-    mkfs.exfat
-endif
-
-# Openssh
-PRODUCT_PACKAGES += \
-    scp \
-    sftp \
-    ssh \
-    sshd \
-    sshd_config \
-    ssh-keygen \
-    start-ssh
-
-# rsync
-PRODUCT_PACKAGES += \
-    rsync
-
-# Stagefright FFMPEG plugin
-PRODUCT_PACKAGES += \
-    libffmpeg_extractor \
-    libffmpeg_omx \
-    media_codecs_ffmpeg.xml
-
-PRODUCT_PROPERTY_OVERRIDES += \
-    media.sf.omx-plugin=libffmpeg_omx.so \
-    media.sf.extractor-plugin=libffmpeg_extractor.so
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
