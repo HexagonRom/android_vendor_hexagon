@@ -10,7 +10,6 @@ PRODUCT_COPY_FILES += \
     vendor/hexagon/configs/permissions/org.cyanogenmod.statusbar.xml:system/etc/permissions/org.cyanogenmod.statusbar.xml \
     vendor/hexagon/configs/permissions/org.cyanogenmod.telephony.xml:system/etc/permissions/org.cyanogenmod.telephony.xml \
     vendor/hexagon/configs/permissions/org.cyanogenmod.theme.xml:system/etc/permissions/org.cyanogenmod.theme.xml
-    vendor/hexagon/configs/permissions/org.cyanogenmod.weather.xml:system/etc/permissions/org.cyanogenmod.weather.xml
 
 # CM Platform Library
 PRODUCT_PACKAGES += \

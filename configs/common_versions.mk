@@ -1,8 +1,7 @@
 # Version information used on all builds
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_VERSION_TAGS=release-keys USER=android-build BUILD_UTC_DATE=$(shell date +"%s")
 
-DATE = $(shell vendor/hexagon/tools/getdate)
-HEXAGON_BRANCH=hex-7.0
+HEXAGON_BRANCH=hex-7.1
 
 # Hexagon RELEASE VERSION
 HEXAGON_VERSION_MAJOR = 2

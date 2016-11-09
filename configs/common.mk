@@ -6,6 +6,7 @@ DEVICE_PACKAGE_OVERLAYS += vendor/hexagon/overlay/common
 # Common dictionaries
 PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
 
+# Required CM packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
     CMAudioService \
@@ -33,7 +34,7 @@ PRODUCT_PACKAGES += \
     CyanogenSetupWizard \
     ExactCalculator \
     HexagonRom \
-    Eleven
+    Eleven \
     LiveLockScreenService \
     LockClock \
     Screencast \
@@ -64,7 +65,6 @@ PRODUCT_PACKAGES += \
 # Extra tools
 PRODUCT_PACKAGES += \
     7z \
-    lib7z \
     bash \
     bzip2 \
     curl \
@@ -159,15 +159,12 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    keyguard.no_require_sim=true \
     ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
     ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
     ro.com.android.wifi-watchlist=GoogleGuest \
     ro.error.receiver.system.apps=com.google.android.feedback \
     ro.com.google.locationfeatures=1 \
     ro.setupwizard.enterprise_mode=1 \
-    ro.com.android.dateformat=MM-dd-yyyy \
-    ro.com.android.dataroaming=false
     ro.kernel.android.checkjni=0 \
     persist.sys.root_access=3 \
     ro.setupwizard.network_required=false \
