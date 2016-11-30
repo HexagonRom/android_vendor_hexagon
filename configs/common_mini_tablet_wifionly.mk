@@ -1,10 +1,7 @@
 SUPERUSER_EMBEDDED := true
 
 # Common overlay
-DEVICE_PACKAGE_OVERLAYS += vendor/hexagon/overlay/common
-
-# Common dictionaries
-PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
+DEVICE_PACKAGE_OVERLAYS += vendor/hexagon/overlay/common_tablet
 
 # Inherit common product packages
 -include vendor/hexagon/configs/common_packages.mk
@@ -12,11 +9,6 @@ PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
 PRODUCT_PROPERTY_OVERRIDES += \
     media.sf.omx-plugin=libffmpeg_omx.so \
     media.sf.extractor-plugin=libffmpeg_extractor.so
-
-# Storage manager
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.storage_manager.enabled=true
-
 
 PRODUCT_BOOT_JARS += \
     org.dirtyunicorns.utils
@@ -44,10 +36,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.build.selinux=1
 
-# Thank you, please drive thru!
-PRODUCT_PROPERTY_OVERRIDES += \
-    persist.sys.dun.override=0
-
 # Backup Tool
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/bin/backuptool.sh:install/bin/backuptool.sh \
@@ -69,18 +57,6 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
-
-# Sony App
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/app/home.apk:system/app/Home/home.apk \
-    vendor/hexagon/prebuilt/common/app/ClockWidgets.apk:system/app/ClockWidgets/ClockWidgets.apk \
-    vendor/hexagon/prebuilt/common/app/WallpaperPicker.apk:system/app/WallpaperPicker/WallpaperPicker.apk \
-    vendor/hexagon/prebuilt/common/app/Weather.apk:system/app/Weather/Weather.apk \
-    vendor/hexagon/prebuilt/common/app/WeatherWidget.apk:system/app/WeatherWidget/WeatherWidget.apk \
-
-#BusyBox
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/BusyBox/busybox:/system/xbin/busybox
 
 # init.d
 PRODUCT_COPY_FILES += \
@@ -108,7 +84,6 @@ PRODUCT_COPY_FILES += \
 
 # Default ringtone
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.config.ringtone=Scarabaeus.ogg \
     ro.config.notification_sound=Antimony.ogg \
     ro.config.alarm_alert=Scandium.ogg
 
@@ -127,22 +102,22 @@ include vendor/hexagon/configs/cmsdk_common.mk
 endif
 
 # SuperSU
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
-    vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
-    vendor/hexagon/prebuilt/common/dolby.zip:system/addon.d/dolby.zip 
+#PRODUCT_COPY_FILES += \
+#    vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+#    vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
 
 # Copy latinime for gesture typing
 #PRODUCT_COPY_FILES += \
 #    vendor/hexagon/prebuilt/common/lib/libjni_latinimegoogle.so:system/lib/libjni_latinimegoogle.so
 
-# Kernel Adiutor App
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/app/KernelAdiutor.apk:system/priv-app/KernelAdiutor/KernelAdiutor.apk
+# Include HEXAGON LatinIME dictionaries
+#PRODUCT_PACKAGE_OVERLAYS += vendor/hexagon/overlay/dictionaries
 
-# AdAway App
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/app/AdAway.apk:system/priv-app/AdAway/AdAway.apk
+# Kernel Adiutor App
+# PRODUCT_COPY_FILES += \
+#    vendor/hexagon/prebuilt/common/app/KernelAdiutor.apk:system/priv-app/KernelAdiutor/KernelAdiutor.apk
+
+
 
 # -include vendor/cyngn/product.mk
 
