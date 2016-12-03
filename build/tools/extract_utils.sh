@@ -646,15 +646,15 @@ function get_file() {
 # Convert apk|jar .odex in the corresposing classes.dex
 #
 function oat2dex() {
-    local CM_TARGET="$1"
+    local HEXAGON_TARGET="$1"
     local OEM_TARGET="$2"
     local SRC="$3"
     local TARGET=
     local OAT=
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$CM_ROOT"/vendor/hexagon/build/tools/smali/baksmali.jar
-        export SMALIJAR="$CM_ROOT"/vendor/hexagon/build/tools/smali/smali.jar
+        export BAKSMALIJAR="$HEXAGON_ROOT"/vendor/hexagon/build/tools/smali/baksmali.jar
+        export SMALIJAR="$HEXAGON_ROOT"/vendor/hexagon/build/tools/smali/smali.jar
     fi
 
     # Extract existing boot.oats to the temp folder
