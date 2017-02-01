@@ -127,9 +127,8 @@ endif
 
 # SuperSU
 PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
     vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
-    vendor/hexagon/prebuilt/common/dolby.zip:system/addon.d/dolby.zip 
+
 
 # Copy latinime for gesture typing
 #PRODUCT_COPY_FILES += \
