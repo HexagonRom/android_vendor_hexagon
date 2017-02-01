@@ -72,11 +72,10 @@ PRODUCT_COPY_FILES += \
 
 # Sony App
 PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/app/home.apk:system/app/Home/home.apk \
     vendor/hexagon/prebuilt/common/app/ClockWidgets.apk:system/app/ClockWidgets/ClockWidgets.apk \
-    vendor/hexagon/prebuilt/common/app/WallpaperPicker.apk:system/app/WallpaperPicker/WallpaperPicker.apk \
     vendor/hexagon/prebuilt/common/app/Weather.apk:system/app/Weather/Weather.apk \
     vendor/hexagon/prebuilt/common/app/WeatherWidget.apk:system/app/WeatherWidget/WeatherWidget.apk \
+    vendor/hexagon/prebuilt/common/app/NexusLauncherPrebuilt.apk:system/priv-app/NexusLauncherPrebuilt/NexusLauncherPrebuilt.apk \
 
 #BusyBox
 PRODUCT_COPY_FILES += \
