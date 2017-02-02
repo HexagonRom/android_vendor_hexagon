@@ -39,7 +39,7 @@ PRODUCT_PACKAGES += \
     AicpExtras \
     BasicDreams \
     Browser2 \
-    HexagonRom
+    HexagonRom \
     LatinImeDictionaryPack \
     LatinIME \
     librs_jni \
@@ -58,7 +58,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Exchange2
 
-# Extra tools in AICP
+# Extra tools
 PRODUCT_PACKAGES += \
     7z \
     bash \
