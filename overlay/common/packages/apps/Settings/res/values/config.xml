@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Copyright (C) 2011 The Android Open Source Project
+<!--
+     Copyright 2016 The ??? Project
 
      Licensed under the Apache License, Version 2.0 (the "License");
      you may not use this file except in compliance with the License.
@@ -13,12 +14,7 @@
      See the License for the specific language governing permissions and
      limitations under the License.
 -->
-
 <resources>
-
-
-<!-- Set Dual-Pane Mode to true for tablets -->
-    <bool name="preferences_prefer_dual_pane">true</bool>
-
+    <!-- If the Storage Manager settings are enabled. -->
+    <bool name="config_storage_manager_settings_enabled">true</bool>
 </resources>
-

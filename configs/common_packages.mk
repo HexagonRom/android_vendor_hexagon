@@ -15,6 +15,7 @@ PRODUCT_PACKAGES += \
 
 # Include librsjni explicitly to workaround GMS issue
 PRODUCT_PACKAGES += \
+    libprotobuf-cpp-full \
     librsjni
 
 # Custom CM packages
@@ -132,3 +133,11 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     telephony-ext
+
+# OMS MASQUERADE
+PRODUCT_PACKAGES += \
+   masquerade
+
+# OMS Verified
+PRODUCT_PROPERTY_OVERRIDES := \
+    ro.substratum.verified=true

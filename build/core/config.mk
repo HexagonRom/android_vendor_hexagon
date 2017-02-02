@@ -23,3 +23,4 @@ FRAMEWORK_CM_API_NEEDS_UPDATE_TEXT := $(TOPDIR)vendor/hexagon/build/core/apichec
 
 BUILD_MAVEN_PREBUILT := $(TOP)/vendor/hexagon/build/core/maven_artifact.mk
 PUBLISH_MAVEN_PREBUILT := $(TOP)/vendor/hexagon/build/core/maven_artifact_publish.mk
+BUILD_HTTP_PREBUILT := $(TOP)/vendor/hexagon/build/core/http_prebuilt.mk
