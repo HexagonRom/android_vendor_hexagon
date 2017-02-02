@@ -74,13 +74,13 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/resolv.conf:system/etc/resolv.conf
 
-# Sony App
+# Prebuilt App
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/app/ClockWidgets.apk:system/app/ClockWidgets/ClockWidgets.apk \
     vendor/hexagon/prebuilt/common/app/Weather.apk:system/app/Weather/Weather.apk \
     vendor/hexagon/prebuilt/common/app/WeatherWidget.apk:system/app/WeatherWidget/WeatherWidget.apk \
-    vendor/hexagon/prebuilt/common/app/NexusLauncherPrebuilt.apk:system/priv-app/NexusLauncherPrebuilt/NexusLauncherPrebuilt.apk \
-
+    vendor/hexagon/prebuilt/common/app/NexusLauncherPrebuilt.apk:system/app/NexusLauncherPrebuilt/NexusLauncherPrebuilt.apk \
+    vendor/hexagon/prebuilt/common/app/Wallpaper.apk:system/app/Wallpaper/Wallpaper.apk
 #BusyBox
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/BusyBox/busybox:/system/xbin/busybox

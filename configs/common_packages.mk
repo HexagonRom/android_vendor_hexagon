@@ -34,11 +34,12 @@ PRODUCT_PACKAGES += \
     WeatherProvider \
     Terminal
 
-# AICP packages
+# HEX packages
 PRODUCT_PACKAGES += \
     AicpExtras \
     BasicDreams \
     Browser2 \
+    HexagonRom
     LatinImeDictionaryPack \
     LatinIME \
     librs_jni \
