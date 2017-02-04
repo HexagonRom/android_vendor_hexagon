@@ -24,9 +24,6 @@ $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 # Inherit from those products. Most specific first.
 $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
 
 PRODUCT_NAME := hexagon_cancro
 PRODUCT_DEVICE := cancro
