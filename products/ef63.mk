@@ -18,11 +18,14 @@ $(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 # Inherit from ef63 device
 $(call inherit-product, device/pantech/ef63/ef63.mk)
 
-# Inherit some common Lineage stuff.
-$(call inherit-product, vendor/hexagon/configs/common.mk)
+# Inherit telephony stuff
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Call the proprietary setup
 $(call inherit-product-if-exists, vendor/pantech/ef63/ef63-vendor.mk)
+
+# Inherit some common hexagon stuff
+$(call inherit-product, vendor/hexagon/configs/common.mk)
 
 PRODUCT_NAME := hexagon_ef63
 PRODUCT_DEVICE := ef63
@@ -33,3 +36,12 @@ PRODUCT_BRAND := PANTECH
 TARGET_VENDOR := PANTECH
 TARGET_VENDOR_PRODUCT_NAME := ef63
 TARGET_VENDOR_DEVICE_NAME := ef63
+
+# hexagon Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+	DEVICE_MAINTAINERS="ChauTruongThinh - DroidVn-Team"
+
+# Boot animation
+TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 1080
+-include vendor/hexagon/configs/bootanimation.mk
