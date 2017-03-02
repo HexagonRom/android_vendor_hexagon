@@ -36,7 +36,6 @@ PRODUCT_PACKAGES += \
 
 # HEX packages
 PRODUCT_PACKAGES += \
-    AicpExtras \
     BasicDreams \
     Browser2 \
     HexagonRom \

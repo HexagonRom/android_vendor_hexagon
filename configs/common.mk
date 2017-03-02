@@ -85,6 +85,11 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/BusyBox/busybox:/system/xbin/busybox
 
+# SuperSU
+PRODUCT_COPY_FILES += \
+    vendor/hexagon/prebuilt/common/UPDATE-SuperSU.zip:system/addon.d/UPDATE-SuperSU.zip \
+    vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon
+
 # init.d
 PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/init.local.rc:root/init.hexagon.rc \
@@ -128,10 +133,6 @@ ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
 include vendor/hexagon/configs/cmsdk_common.mk
 endif
-
-# SuperSU
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/etc/init.d/99SuperSUDaemon:system/etc/init.d/99SuperSUDaemon \
 
 
 # Copy latinime for gesture typing
