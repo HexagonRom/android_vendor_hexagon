@@ -47,4 +47,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # CyanogenMod Platform Internal
 PRODUCT_PROPERTY_OVERRIDES += \
   ro.cm.build.version.plat.rev=$(CM_PLATFORM_REV)
-
