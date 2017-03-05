@@ -5,7 +5,7 @@ HEXAGON_BRANCH=hex-7.1
 
 # Hexagon RELEASE VERSION
 HEXAGON_VERSION_MAJOR = 2
-HEXAGON_VERSION_MINOR = 0
+HEXAGON_VERSION_MINOR = 1
 HEXAGON_VERSION_MAINTENANCE =
 HEX = HexagonROM
 
@@ -42,13 +42,14 @@ endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.modversion=$(HEXAGON_VERSION) \
-    ro.hexagon.version=$(VERSION)-$(HEXAGON_BUILDTYPE)
+    ro.hexagon.version=$(VERSION) \
+    ro.hexagon.build.type=$(HEXAGON_BUILDTYPE)
 
 # needed for statistics
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.hexagon.branch=$(HEXAGON_BRANCH) \
     ro.download.url=http://download.droidvn.com/ \
-    ro.hex.name=Hexagon Rom \
+    ro.hex.name=HexagonRom \
     ro.romstats.buildtype=$(HEXAGON_BUILDTYPE) \
     ro.hexagon.version=$(VERSION) \
     ro.romstats.tframe=1 \
