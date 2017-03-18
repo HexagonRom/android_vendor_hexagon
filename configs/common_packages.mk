@@ -50,6 +50,7 @@ PRODUCT_PACKAGES += \
     su \
     Superuser \
     Torch \
+    HexCenter \
     VisualizationWallpapers
 
 # Exchange support
