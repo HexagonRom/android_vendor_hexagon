@@ -29,7 +29,6 @@ PRODUCT_PACKAGES += \
     LockClock \
     Screencast \
     Recorder \
-    Trebuchet \
     WallpaperPicker \
     WeatherProvider \
     Terminal
