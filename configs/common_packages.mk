@@ -28,7 +28,7 @@ PRODUCT_PACKAGES += \
     LiveLockScreenService \
     LockClock \
     Screencast \
-    SoundRecorder \
+    Recorder \
     Trebuchet \
     WallpaperPicker \
     WeatherProvider \
