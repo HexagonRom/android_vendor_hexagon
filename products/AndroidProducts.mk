@@ -90,4 +90,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/xt1060.mk \
     $(LOCAL_DIR)/Z008.mk \
     $(LOCAL_DIR)/Z00A.mk \
+    $(LOCAL_DIR)/Z00L.mk \
     $(LOCAL_DIR)/z3c.mk
