@@ -1,5 +1,3 @@
-# Copyright (C) 2015 The CyanogenMod Project
-#
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
 # You may obtain a copy of the License at
@@ -22,9 +20,6 @@ $(call inherit-product, device/oneplus/oneplus3/device.mk)
 # Inherit some common hexagon stuff.
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
@@ -35,16 +30,11 @@ PRODUCT_BRAND := OnePlus
 
 PRODUCT_GMS_CLIENTID_BASE := android-oneplus
 
-TARGET_VENDOR_PRODUCT_NAME := OnePlus3
-TARGET_VENDOR_DEVICE_NAME := OnePlus3
-PRODUCT_BUILD_PROP_OVERRIDES += TARGET_DEVICE=OnePlus3 PRODUCT_NAME=OnePlus3
+TARGET_VENDOR := oneplus
 
+# Hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-    BUILD_FINGERPRINT=OnePlus/OnePlus3/OnePlus3:6.0.1/MMB29M/213690:user/release-keys \
-    PRIVATE_BUILD_DESC="OnePlus3-user 6.0.1 MMB29M 42 dev-keys"
-    DEVICE_MAINTAINERS=""
-
-PRODUCT_SYSTEM_PROPERTY_BLACKLIST += ro.product.model
+    DEVICE_MAINTAINERS="Rkschunk"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
