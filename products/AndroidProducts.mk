@@ -25,6 +25,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/flounder.mk \
     $(LOCAL_DIR)/fugu.mk \
     $(LOCAL_DIR)/g2m.mk \
+    $(LOCAL_DIR)/grandprimeve3g.mk \
     $(LOCAL_DIR)/geehrc.mk \
     $(LOCAL_DIR)/grouper.mk \
     $(LOCAL_DIR)/h811.mk \
