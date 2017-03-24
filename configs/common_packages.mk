@@ -37,6 +37,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     BasicDreams \
     Browser2 \
+    Camera2 \
     HexagonRom \
     LatinImeDictionaryPack \
     LatinIME \
