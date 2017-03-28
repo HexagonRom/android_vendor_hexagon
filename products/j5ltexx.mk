@@ -18,21 +18,21 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-$(call inherit-product, device/motorola/athene/full_athene.mk)
+$(call inherit-product, device/samsung/j5ltexx/full_j5ltexx.mk)
 
 
 # Boot animation
-TARGET_SCREEN_WIDTH := 1080
-TARGET_SCREEN_HEIGHT := 1920
+TARGET_SCREEN_WIDTH := 720
+TARGET_SCREEN_HEIGHT := 1280
 -include vendor/hexagon/configs/bootanimation.mk
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-        DEVICE_MAINTAINERS="GioStocco"
+        DEVICE_MAINTAINERS="Has_007"
 
 ## Device identifier. This must come after all inclusions
-PRODUCT_DEVICE := athene
-PRODUCT_NAME := hexagon_athene
-PRODUCT_BRAND := Motorola
-PRODUCT_MANUFACTURER := Motorola
-PRODUCT_RELEASE_NAME := athene
+PRODUCT_DEVICE := j5ltexx
+PRODUCT_NAME := hexagon_j5ltexx
+PRODUCT_BRAND := Samsung
+PRODUCT_MANUFACTURER := Samsung
+PRODUCT_RELEASE_NAME := j5ltexx

@@ -2,7 +2,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/amami.mk \
     $(LOCAL_DIR)/angler.mk \
     $(LOCAL_DIR)/armani.mk \
-    $(LOCAL_DIR)/athene.mk \
     $(LOCAL_DIR)/bacon.mk \
     $(LOCAL_DIR)/bullhead.mk \
     $(LOCAL_DIR)/cancro.mk \
@@ -24,7 +23,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/ether.mk \
     $(LOCAL_DIR)/falcon.mk \
     $(LOCAL_DIR)/flounder.mk \
-    $(LOCAL_DIR)/fortunave3g.mk \
     $(LOCAL_DIR)/fugu.mk \
     $(LOCAL_DIR)/g2m.mk \
     $(LOCAL_DIR)/grandprimeve3g.mk \
@@ -41,6 +39,8 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/i9300.mk \
     $(LOCAL_DIR)/i9305.mk \
     $(LOCAL_DIR)/jewel.mk \
+    $(LOCAL_DIR)/j5ltexx.mk \
+    $(LOCAL_DIR)/j5nltexx.mk \
     $(LOCAL_DIR)/jfltecri.mk \
     $(LOCAL_DIR)/jfltecsp.mk \
     $(LOCAL_DIR)/jfltespr.mk \
