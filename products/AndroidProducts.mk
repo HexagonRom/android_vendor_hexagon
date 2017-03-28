@@ -24,6 +24,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/ether.mk \
     $(LOCAL_DIR)/falcon.mk \
     $(LOCAL_DIR)/flounder.mk \
+    $(LOCAL_DIR)/fortunave3g.mk \
     $(LOCAL_DIR)/fugu.mk \
     $(LOCAL_DIR)/g2m.mk \
     $(LOCAL_DIR)/grandprimeve3g.mk \
