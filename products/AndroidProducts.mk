@@ -31,6 +31,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/grandprimeve3g.mk \
     $(LOCAL_DIR)/geehrc.mk \
     $(LOCAL_DIR)/grouper.mk \
+    $(LOCAL_DIR)/ham.mk \
     $(LOCAL_DIR)/h811.mk \
     $(LOCAL_DIR)/h815.mk \
     $(LOCAL_DIR)/hammerhead.mk \
