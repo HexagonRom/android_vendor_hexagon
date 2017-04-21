@@ -69,6 +69,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/oneplus3.mk \
     $(LOCAL_DIR)/osprey.mk \
     $(LOCAL_DIR)/otus.mk \
+    $(LOCAL_DIR)/p2a42.mk \
     $(LOCAL_DIR)/onyx.mk \
     $(LOCAL_DIR)/peregrine.mk \
     $(LOCAL_DIR)/serranodsdd.mk \
