@@ -40,7 +40,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Aashish Toshniwal"
+	DEVICE_MAINTAINERS="Teja k"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1280
