@@ -4,8 +4,6 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
 
 $(call inherit-product, device/htc/m8/full_m8.mk)
 
