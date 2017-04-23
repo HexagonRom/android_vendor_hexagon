@@ -17,6 +17,11 @@ TARGET_SCREEN_HEIGHT := 960
 TARGET_SCREEN_WIDTH := 540
 -include vendor/hexagon/configs/bootanimation.mk
 
+# Stock build fingerprint
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    BUILD_FINGERPRINT=samsung/grandprimeve3gxx/grandprimeve3g:5.1.1/LMY48B/G531HDDU0APK2:user/release-keys \
+    PRIVATE_BUILD_DESC="grandprimeve3gxx-user 5.1.1 LMY48B G531HDDU0APK2 release-keys"
+
 # Hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DEVICE_MAINTAINERS="Remilia Scarlet (remilia15)"
