@@ -1,6 +1,6 @@
 LOCAL_PATH := device/samsung/grandprimeve3g
 
-## Specify phone tech before including full_phone	
+## Specify phone tech before including full_phone
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 # Release name
@@ -16,6 +16,10 @@ $(call inherit-product, $(LOCAL_PATH)/grandprimeve3g.mk)
 TARGET_SCREEN_HEIGHT := 960
 TARGET_SCREEN_WIDTH := 540
 -include vendor/hexagon/configs/bootanimation.mk
+
+# Hexagon Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DEVICE_MAINTAINERS="Remilia Scarlet (remilia15)"
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := grandprimeve3g
