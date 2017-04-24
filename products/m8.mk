@@ -5,7 +5,7 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
 
-$(call inherit-product, device/htc/m8/full_m8.mk)
+$(call inherit-product, device/htc/m8/device.mk)
 
 $(call inherit-product-if-exists, vendor/htc/m8/m8-vendor.mk)
 
