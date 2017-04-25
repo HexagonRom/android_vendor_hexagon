@@ -23,7 +23,7 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 # Must define platform variant before including any common things
 TARGET_BOARD_PLATFORM_VARIANT := msm8952
 
-PRODUCT_NAME := aicp_shamrock
+PRODUCT_NAME := hexagon_shamrock
 BOARD_VENDOR := google
 PRODUCT_DEVICE := shamrock
 
@@ -43,7 +43,7 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
 TARGET_SCREEN_WIDTH := 1080
--include vendor/aicp/configs/bootanimation.mk
+-include vendor/hexagon/configs/bootanimation.mk
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     BUILD_FINGERPRINT=qcom/shamrock/shamrock:7.1.1/NNH03/3875314:user/release-keys \
