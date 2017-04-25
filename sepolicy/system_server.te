@@ -12,3 +12,6 @@ allow system_server media_rw_data_file:dir r_dir_perms;
 
 get_prop(system_server, adbsecure_prop)
 
+allow system_server pocket_judge_sysfs:dir search;
+allow system_server pocket_judge_sysfs:file rw_file_perms;
+
