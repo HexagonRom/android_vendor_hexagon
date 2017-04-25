@@ -36,7 +36,7 @@ TARGET_VENDOR := google
 TARGET_VENDOR_PRODUCT_NAME := Shamrock
 TARGET_VENDOR_DEVICE_NAME := shamrock
 
-# AICP Device Maintainers
+# Hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
     DEVICE_MAINTAINERS="Vedat Ak (Incredible), Kaan Külahlı (Rygebin)"
 
