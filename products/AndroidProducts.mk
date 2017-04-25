@@ -27,6 +27,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/fortuna3g.mk \
     $(LOCAL_DIR)/fortunave3g.mk \
     $(LOCAL_DIR)/fugu.mk \
+    $(LOCAL_DIR)/full_s2.mk \
     $(LOCAL_DIR)/g2m.mk \
     $(LOCAL_DIR)/grandprimeve3g.mk \
     $(LOCAL_DIR)/geehrc.mk \
