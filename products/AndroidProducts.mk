@@ -27,10 +27,12 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/fortuna3g.mk \
     $(LOCAL_DIR)/fortunave3g.mk \
     $(LOCAL_DIR)/fugu.mk \
+    $(LOCAL_DIR)/full_s2.mk \
     $(LOCAL_DIR)/g2m.mk \
     $(LOCAL_DIR)/grandprimeve3g.mk \
     $(LOCAL_DIR)/geehrc.mk \
     $(LOCAL_DIR)/grouper.mk \
+    $(LOCAL_DIR)/ham.mk \
     $(LOCAL_DIR)/h811.mk \
     $(LOCAL_DIR)/h815.mk \
     $(LOCAL_DIR)/hammerhead.mk \
@@ -67,10 +69,13 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/oneplus3.mk \
     $(LOCAL_DIR)/osprey.mk \
     $(LOCAL_DIR)/otus.mk \
+    $(LOCAL_DIR)/p2a42.mk \
     $(LOCAL_DIR)/onyx.mk \
     $(LOCAL_DIR)/peregrine.mk \
+    $(LOCAL_DIR)/seed.mk \
     $(LOCAL_DIR)/serranodsdd.mk \
     $(LOCAL_DIR)/shamu.mk \
+    $(LOCAL_DIR)/shamrock.mk \
     $(LOCAL_DIR)/shieldtablet.mk \
     $(LOCAL_DIR)/sprout4.mk \
     $(LOCAL_DIR)/surnia.mk \
@@ -97,4 +102,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/Z008.mk \
     $(LOCAL_DIR)/Z00A.mk \
     $(LOCAL_DIR)/Z00L.mk \
+    $(LOCAL_DIR)/z2_plus.mk \
     $(LOCAL_DIR)/z3c.mk
