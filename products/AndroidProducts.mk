@@ -25,6 +25,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/falcon.mk \
     $(LOCAL_DIR)/flounder.mk \
     $(LOCAL_DIR)/fortuna3g.mk \
+    $(LOCAL_DIR)/fortunafz.mk \
     $(LOCAL_DIR)/fortunave3g.mk \
     $(LOCAL_DIR)/fugu.mk \
     $(LOCAL_DIR)/full_s2.mk \
