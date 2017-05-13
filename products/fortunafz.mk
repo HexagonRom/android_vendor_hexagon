@@ -22,7 +22,7 @@ $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/samsung/fortuna3g/full_fortunafz.mk)
+$(call inherit-product, device/samsung/fortunafz/full_fortunafz.mk)
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 960
