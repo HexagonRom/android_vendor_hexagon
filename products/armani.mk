@@ -23,11 +23,10 @@ PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=armani
 
-# AICP Device Maintainers
+# HEXAGON Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
-	DEVICE_MAINTAINERS="Parth B (TheStrix)"
+DEVICE_MAINTAINERS="Sujit Roy"
 
 # Boot animation
-TARGET_SCREEN_HEIGHT := 1280
-TARGET_SCREEN_WIDTH := 720
--include vendor/hexagon/configs/bootanimation.mk
+#TARGET_SCREEN_HEIGHT := 1280
+#TARGET_SCREEN_WIDTH := 720
