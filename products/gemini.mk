@@ -13,32 +13,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+# Inherit from those products. Most specific first.
+$(call inherit-product, $(SRC_TARGET_DIR)/product/core_64_bit.mk)
+$(call inherit-product, $(SRC_TARGET_DIR)/product/full_base_telephony.mk)
 
-$(call inherit-product, device/xiaomi/gemini/full_gemini.mk)
+$(call inherit-product, device/xiaomi/gemini/device.mk)
 
-# Inherit some common hexagon stuff.
+# Inherit some common stuff.
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
+# Device identifier. This must come after all inclusions.
 PRODUCT_NAME := hexagon_gemini
-BOARD_VENDOR := Xiaomi
-PRODUCT_BRAND := Xiaomi
-TARGET_VENDOR := Xiaomi
 PRODUCT_DEVICE := gemini
+PRODUCT_BRAND := Xiaomi
+PRODUCT_MODEL := MI 5
+PRODUCT_MANUFACTURER := Xiaomi
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     TARGET_DEVICE="gemini" \
     PRODUCT_NAME="gemini" \
-    BUILD_FINGERPRINT="Xiaomi/gemini/gemini:6.0.1/MXB48T/6.7.10:user/release-keys" \
-    PRIVATE_BUILD_DESC="gemini-user 6.0.1 MXB48T 6.7.10 release-keys"
+    BUILD_FINGERPRINT="Xiaomi/gemini/gemini:7.0/NRD90M/V8.2.1.0.NAACNEB:user/release-keys" \
+    PRIVATE_BUILD_DESC="gemini-user 7.0 NRD90M V8.2.1.0.NAACNEB release-keys"
+
+TARGET_VENDOR := Xiaomi
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
