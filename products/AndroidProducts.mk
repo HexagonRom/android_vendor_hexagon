@@ -106,4 +106,5 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/Z00L.mk \
     $(LOCAL_DIR)/z2_plus.mk \
     $(LOCAL_DIR)/z3c.mk \
+    $(LOCAL_DIR)/zl1.mk \
     $(LOCAL_DIR)/x2.mk
