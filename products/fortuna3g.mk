@@ -17,11 +17,18 @@
 ## Specify phone tech before including full_phone
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
+# Release name
+PRODUCT_RELEASE_NAME="Galaxy Grand Prime"
+
 # Inherit some common Hexagon stuff.
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
 # Inherit device configuration
 $(call inherit-product, device/samsung/fortuna3g/full_fortuna3g.mk)
+
+# Hexagon Device Maintainers
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    DEVICE_MAINTAINERS="Hassan Sardar (Has.007)"
 
 # Setup device configuration
 PRODUCT_DEVICE := fortuna3g
