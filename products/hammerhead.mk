@@ -4,9 +4,6 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
 # Inherit AOSP device configuration for hammerhead
 $(call inherit-product, device/lge/hammerhead/full_hammerhead.mk)
 
