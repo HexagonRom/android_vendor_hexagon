@@ -10,6 +10,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/chagallwifi.mk \
     $(LOCAL_DIR)/clark.mk \
     $(LOCAL_DIR)/condor.mk \
+    $(LOCAL_DIR)/crackling.mk \
     $(LOCAL_DIR)/d2att.mk \
     $(LOCAL_DIR)/d2tmo.mk \
     $(LOCAL_DIR)/d2vzw.mk \
