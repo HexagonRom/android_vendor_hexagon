@@ -16,7 +16,7 @@ ifndef HEXAGON_BUILDTYPE
         RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^HEXAGON_||g')
         HEXAGON_BUILDTYPE := $(RELEASE_TYPE)
     else
-        HEXAGON_BUILDTYPE := OFFICIAL
+        HEXAGON_BUILDTYPE := UNOFFICIAL
     endif
 endif
 
