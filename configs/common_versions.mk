@@ -54,8 +54,8 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.hexagon.version=$(VERSION) \
     ro.romstats.tframe=1 \
     ro.romstats.askfirst=1 \
-    ro.romstats.ga=UA-48128535-2
-
+    ro.romstats.ga=UA-48128535-2 \
+    hex.updater.uri=https://raw.githubusercontent.com/HexagonRom/HexUpdate_API/hex-7.1/$(HEXAGON_BUILD).json
 # Camera shutter sound property
 PRODUCT_PROPERTY_OVERRIDES += \
     persist.sys.camera-sound=1
