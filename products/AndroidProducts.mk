@@ -4,6 +4,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/addison.mk \
     $(LOCAL_DIR)/angler.mk \
     $(LOCAL_DIR)/armani.mk \
+    $(LOCAL_DIR)/athene.mk \
     $(LOCAL_DIR)/bacon.mk \
     $(LOCAL_DIR)/bullhead.mk \
     $(LOCAL_DIR)/cancro.mk \
