@@ -4,9 +4,6 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
 # Inherit AOSP device configuration for bullhead
 $(call inherit-product, device/lge/bullhead/aosp_bullhead.mk)
 
@@ -19,10 +16,8 @@ PRODUCT_RESTRICT_VENDOR_FILES := false
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=bullhead \
-    BUILD_FINGERPRINT=google/bullhead/bullhead:6.0.1/MTC20F/3031278:user/release-keys \
-    PRIVATE_BUILD_DESC="bullhead-user 6.0.1 MTC20F 3031278 release-keys" \
-    BUILD_ID=MTC20F
-
+    BUILD_FINGERPRINT="google/bullhead/bullhead:7.1.2/N2G47Z/4045513:user/release-keys" \
+    PRIVATE_BUILD_DESC="bullhead-user 7.1.2 N2G47Z 4045513 release-keys"
 
 # Boot animation
 TARGET_SCREEN_HEIGHT := 1920
