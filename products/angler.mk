@@ -4,9 +4,6 @@ $(call inherit-product, vendor/hexagon/configs/common.mk)
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
 # Inherit device configuration
 $(call inherit-product, device/huawei/angler/aosp_angler.mk)
 
@@ -21,8 +18,8 @@ TARGET_VENDOR := huawei
 
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRODUCT_NAME=angler \
-    BUILD_FINGERPRINT=google/angler/angler:7.1.1/N4F26O/3582057:user/release-keys \
-    PRIVATE_BUILD_DESC="angler-user 7.1.1 N4F26O 3582057 release-keys"
+    BUILD_FINGERPRINT=google/angler/angler:7.1.2/N2G48B/4073501:user/release-keys \
+    PRIVATE_BUILD_DESC="angler-user 7.1.2 N2G48B 4073501 release-keys"
 
 # hexagon Device Maintainers
 PRODUCT_BUILD_PROP_OVERRIDES += \
