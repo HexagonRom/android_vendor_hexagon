@@ -16,13 +16,20 @@
 
 $(call inherit-product, device/motorola/addison/full_addison.mk)
 
+# Inherit some common hexagon stuff.
+$(call inherit-product, vendor/hexagon/configs/common.mk)
+
+# Inherit telephony stuff
+$(call inherit-product, vendor/hexagon/configs/telephony.mk)
+
 # Boot animation
 TARGET_SCREEN_WIDTH := 1080
 TARGET_SCREEN_HEIGHT := 1920
+-include vendor/hexagon/configs/bootanimation.mk
 
 ## Device identifier. This must come after all inclusions
 PRODUCT_DEVICE := addison
-PRODUCT_NAME := lineage_addison
+PRODUCT_NAME := hexagon_addison
 PRODUCT_BRAND := motorola
 PRODUCT_MANUFACTURER := motorola
 

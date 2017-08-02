@@ -1,6 +1,7 @@
 PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/a6000.mk \
     $(LOCAL_DIR)/A6020.mk \
+    $(LOCAL_DIR)/addison.mk \
     $(LOCAL_DIR)/amami.mk \
     $(LOCAL_DIR)/angler.mk \
     $(LOCAL_DIR)/armani.mk \
