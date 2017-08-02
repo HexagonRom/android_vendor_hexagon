@@ -21,9 +21,6 @@ $(call inherit-product, device/oneplus/bacon/bacon.mk)
 # Inherit telephony stuff
 $(call inherit-product, vendor/hexagon/configs/telephony.mk)
 
-# Enhanced NFC
-$(call inherit-product, vendor/hexagon/configs/nfc_enhanced.mk)
-
 # Inherit some common hexagon stuff
 $(call inherit-product, vendor/hexagon/configs/common.mk)
 
