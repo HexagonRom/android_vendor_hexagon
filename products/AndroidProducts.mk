@@ -12,6 +12,7 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/capricorn.mk \
     $(LOCAL_DIR)/chagalllte.mk \
     $(LOCAL_DIR)/chagallwifi.mk \
+    $(LOCAL_DIR)/che10.mk \
     $(LOCAL_DIR)/clark.mk \
     $(LOCAL_DIR)/condor.mk \
     $(LOCAL_DIR)/crackling.mk \
