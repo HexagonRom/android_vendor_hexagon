@@ -362,3 +362,11 @@ PRODUCT_PROPERTY_OVERRIDES += \
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
+
+# Hexagon Versioning
+-include vendor/hexagon/config/version.mk
+
+# Themes
+PRODUCT_PACKAGES += \
+    PixelTheme \
+    Stock
