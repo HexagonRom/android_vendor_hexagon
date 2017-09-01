@@ -25,8 +25,6 @@ PRODUCT_PACKAGES += \
     CustomTiles \
     Eleven \
     ExactCalculator \
-    Jelly \
-    LiveLockScreenService \
     LockClock \
     Screencast \
     Recorder \
