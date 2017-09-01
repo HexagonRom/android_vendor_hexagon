@@ -126,9 +126,6 @@ PRODUCT_COPY_FILES += packages/wallpapers/LivePicker/android.software.live_wallp
 -include vendor/hexagon/configs/common_versions.mk
 -include vendor/hexagon/configs/partner_gms.mk
 
-# Theme engine
--include vendor/hexagon/configs/themes_common.mk
-
 ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
 include vendor/hexagon/configs/cmsdk_common.mk
