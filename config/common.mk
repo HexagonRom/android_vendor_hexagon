@@ -1,5 +1,8 @@
 PRODUCT_BRAND ?= HexagonRom
 
+# Disable dexpreopt
+WITH_DEXPREOPT := false
+
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
 ifeq ($(PRODUCT_GMS_CLIENTID_BASE),)
