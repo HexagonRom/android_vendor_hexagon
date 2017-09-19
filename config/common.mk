@@ -83,14 +83,14 @@ PRODUCT_COPY_FILES += \
 
 # This is Hexagon!
 PRODUCT_COPY_FILES += \
-    vendor/hexagon/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/hexagon/config/permissions/org.lineageos.android.xml:system/etc/permissions/org.lineageos.android.xml
 
 # Include Hexagon audio files
 include vendor/hexagon/config/hexagon_audio.mk
 
-ifneq ($(TARGET_DISABLE_CMSDK), true)
-# CMSDK
-include vendor/hexagon/config/cmsdk_common.mk
+ifneq ($(TARGET_DISABLE_LINEAGE_SDK), true)
+# Lineage SDK
+include vendor/hexagon/config/lineage_sdk_common.mk
 endif
 
 # TWRP
@@ -106,7 +106,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     BluetoothExt \
     CMAudioService \
-    CMParts \
+    LineageParts \
     Development \
     Profiles \
     WeatherManagerService
@@ -126,7 +126,7 @@ PRODUCT_PACKAGES += \
 # Custom Hexagon packages
 PRODUCT_PACKAGES += \
     AudioFX \
-    CMSettingsProvider \
+    LineageSettingsProvider \
     Eleven \
     ExactCalculator \
     Jelly \
