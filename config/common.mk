@@ -65,9 +65,9 @@ PRODUCT_COPY_FILES += \
     vendor/hexagon/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
-# Hexagon-specific init file
-PRODUCT_COPY_FILES += \
-    vendor/hexagon/prebuilt/common/etc/init.local.rc:root/init.hexagon.rc
+# Copy all Hexagon-specific init rc files
+$(foreach f,$(wildcard vendor/hexagon/prebuilt/common/etc/init/*.rc),\
+	$(eval PRODUCT_COPY_FILES += $(f):system/etc/init/$(notdir $f)))
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
