@@ -96,6 +96,10 @@ PRODUCT_COPY_FILES += \
 # Include Hexagon audio files
 include vendor/hexagon/config/hexagon_audio.mk
 
+# Fix Google dialer
+PRODUCT_COPY_FILES += \
+    vendor/aicp/prebuilt/common/etc/dialer_experience.xml:system/etc/sysconfig/dialer_experience.xml
+
 ifneq ($(TARGET_DISABLE_LINEAGE_SDK), true)
 # Lineage SDK
 include vendor/hexagon/config/lineage_sdk_common.mk
