@@ -375,3 +375,10 @@ $(call prepend-product-if-exists, vendor/extra/product.mk)
 PRODUCT_PACKAGES += \
     PixelTheme \
     Stock
+
+# DU Utils Library
+PRODUCT_PACKAGES += \
+    org.dirtyunicorns.utils
+
+PRODUCT_BOOT_JARS += \
+    org.dirtyunicorns.utils
