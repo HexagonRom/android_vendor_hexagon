@@ -183,7 +183,7 @@ PRODUCT_PACKAGES += \
 ifneq ($(WITH_HEXAGON_CHARGER),false)
 PRODUCT_PACKAGES += \
     charger_res_images \
-    hexagon_charger_res_images \
+    lineage_charger_res_images \
     font_log.png \
     libhealthd.hexagon
 endif
