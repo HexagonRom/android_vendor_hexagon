@@ -118,7 +118,6 @@ PRODUCT_PACKAGES += \
 # Required Hexagon packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
-    CMAudioService \
     LineageParts \
     Development \
     Profiles \
