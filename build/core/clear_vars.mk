@@ -1,5 +1,5 @@
 #
-# Lineage-specific variable clears
+# Hexagon-specific variable clears
 #
 LOCAL_IGNORE_SUBDIR :=
 

@@ -1,4 +1,4 @@
-PRODUCT_BRAND ?= LineageOS
+PRODUCT_BRAND ?= HexagonRom
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 
@@ -41,37 +41,37 @@ endif
 
 # Backup Tool
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
-    vendor/lineage/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
-    vendor/lineage/prebuilt/common/bin/50-lineage.sh:system/addon.d/50-lineage.sh \
-    vendor/lineage/prebuilt/common/bin/blacklist:system/addon.d/blacklist
+    vendor/hexagon/prebuilt/common/bin/backuptool.sh:install/bin/backuptool.sh \
+    vendor/hexagon/prebuilt/common/bin/backuptool.functions:install/bin/backuptool.functions \
+    vendor/hexagon/prebuilt/common/bin/50-hexagon.sh:system/addon.d/50-hexagon.sh \
+    vendor/hexagon/prebuilt/common/bin/blacklist:system/addon.d/blacklist
 
 # Backup Services whitelist
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
+    vendor/hexagon/config/permissions/backup.xml:system/etc/sysconfig/backup.xml
 
 # Signature compatibility validation
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
+    vendor/hexagon/prebuilt/common/bin/otasigcheck.sh:install/bin/otasigcheck.sh
 
 # init.d support
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
-    vendor/lineage/prebuilt/common/bin/sysinit:system/bin/sysinit
+    vendor/hexagon/prebuilt/common/etc/init.d/00banner:system/etc/init.d/00banner \
+    vendor/hexagon/prebuilt/common/bin/sysinit:system/bin/sysinit
 
 ifneq ($(TARGET_BUILD_VARIANT),user)
 # userinit support
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
+    vendor/hexagon/prebuilt/common/etc/init.d/90userinit:system/etc/init.d/90userinit
 endif
 
-# Lineage-specific init file
+# Hexagon-specific init file
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/etc/init.local.rc:root/init.lineage.rc
+    vendor/hexagon/prebuilt/common/etc/init.local.rc:root/init.hexagon.rc
 
 # Copy over added mimetype supported in libcore.net.MimeUtils
 PRODUCT_COPY_FILES += \
-    vendor/lineage/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
+    vendor/hexagon/prebuilt/common/lib/content-types.properties:system/lib/content-types.properties
 
 # Enable SIP+VoIP on all targets
 PRODUCT_COPY_FILES += \
@@ -81,28 +81,28 @@ PRODUCT_COPY_FILES += \
 PRODUCT_COPY_FILES += \
     frameworks/base/data/keyboards/Vendor_045e_Product_028e.kl:system/usr/keylayout/Vendor_045e_Product_0719.kl
 
-# This is Lineage!
+# This is Hexagon!
 PRODUCT_COPY_FILES += \
-    vendor/lineage/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
+    vendor/hexagon/config/permissions/com.cyanogenmod.android.xml:system/etc/permissions/com.cyanogenmod.android.xml
 
-# Include Lineage audio files
-include vendor/lineage/config/lineage_audio.mk
+# Include Hexagon audio files
+include vendor/hexagon/config/hexagon_audio.mk
 
 ifneq ($(TARGET_DISABLE_CMSDK), true)
 # CMSDK
-include vendor/lineage/config/cmsdk_common.mk
+include vendor/hexagon/config/cmsdk_common.mk
 endif
 
 # TWRP
 ifeq ($(WITH_TWRP),true)
-include vendor/lineage/config/twrp.mk
+include vendor/hexagon/config/twrp.mk
 endif
 
 # Bootanimation
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-# Required Lineage packages
+# Required Hexagon packages
 PRODUCT_PACKAGES += \
     BluetoothExt \
     CMAudioService \
@@ -123,11 +123,10 @@ PRODUCT_PACKAGES += \
     libprotobuf-cpp-full \
     librsjni
 
-# Custom Lineage packages
+# Custom Hexagon packages
 PRODUCT_PACKAGES += \
     AudioFX \
     CMSettingsProvider \
-    LineageSetupWizard \
     Eleven \
     ExactCalculator \
     Jelly \
@@ -141,7 +140,7 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     Exchange2
 
-# Extra tools in Lineage
+# Extra tools in Hexagon
 PRODUCT_PACKAGES += \
     7z \
     bash \
@@ -169,12 +168,12 @@ PRODUCT_PACKAGES += \
     zip
 
 # Custom off-mode charger
-ifneq ($(WITH_LINEAGE_CHARGER),false)
+ifneq ($(WITH_HEXAGON_CHARGER),false)
 PRODUCT_PACKAGES += \
     charger_res_images \
-    lineage_charger_res_images \
+    hexagon_charger_res_images \
     font_log.png \
-    libhealthd.lineage
+    libhealthd.hexagon
 endif
 
 # ExFAT support
@@ -228,130 +227,130 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
-DEVICE_PACKAGE_OVERLAYS += vendor/lineage/overlay/common
+DEVICE_PACKAGE_OVERLAYS += vendor/hexagon/overlay/common
 
-PRODUCT_VERSION_MAJOR = 15
+PRODUCT_VERSION_MAJOR = 3
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE := 0
 
 ifeq ($(TARGET_VENDOR_SHOW_MAINTENANCE_VERSION),true)
-    LINEAGE_VERSION_MAINTENANCE := $(PRODUCT_VERSION_MAINTENANCE)
+    HEXAGON_VERSION_MAINTENANCE := $(PRODUCT_VERSION_MAINTENANCE)
 else
-    LINEAGE_VERSION_MAINTENANCE := 0
+    HEXAGON_VERSION_MAINTENANCE := 0
 endif
 
-# Set LINEAGE_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
+# Set HEXAGON_BUILDTYPE from the env RELEASE_TYPE, for jenkins compat
 
-ifndef LINEAGE_BUILDTYPE
+ifndef HEXAGON_BUILDTYPE
     ifdef RELEASE_TYPE
-        # Starting with "LINEAGE_" is optional
-        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^LINEAGE_||g')
-        LINEAGE_BUILDTYPE := $(RELEASE_TYPE)
+        # Starting with "HEXAGON_" is optional
+        RELEASE_TYPE := $(shell echo $(RELEASE_TYPE) | sed -e 's|^HEXAGON_||g')
+        HEXAGON_BUILDTYPE := $(RELEASE_TYPE)
     endif
 endif
 
 # Filter out random types, so it'll reset to UNOFFICIAL
-ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(LINEAGE_BUILDTYPE)),)
-    LINEAGE_BUILDTYPE :=
+ifeq ($(filter RELEASE NIGHTLY SNAPSHOT EXPERIMENTAL,$(HEXAGON_BUILDTYPE)),)
+    HEXAGON_BUILDTYPE :=
 endif
 
-ifdef LINEAGE_BUILDTYPE
-    ifneq ($(LINEAGE_BUILDTYPE), SNAPSHOT)
-        ifdef LINEAGE_EXTRAVERSION
+ifdef HEXAGON_BUILDTYPE
+    ifneq ($(HEXAGON_BUILDTYPE), SNAPSHOT)
+        ifdef HEXAGON_EXTRAVERSION
             # Force build type to EXPERIMENTAL
-            LINEAGE_BUILDTYPE := EXPERIMENTAL
-            # Remove leading dash from LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := -$(LINEAGE_EXTRAVERSION)
+            HEXAGON_BUILDTYPE := EXPERIMENTAL
+            # Remove leading dash from HEXAGON_EXTRAVERSION
+            HEXAGON_EXTRAVERSION := $(shell echo $(HEXAGON_EXTRAVERSION) | sed 's/-//')
+            # Add leading dash to HEXAGON_EXTRAVERSION
+            HEXAGON_EXTRAVERSION := -$(HEXAGON_EXTRAVERSION)
         endif
     else
-        ifndef LINEAGE_EXTRAVERSION
+        ifndef HEXAGON_EXTRAVERSION
             # Force build type to EXPERIMENTAL, SNAPSHOT mandates a tag
-            LINEAGE_BUILDTYPE := EXPERIMENTAL
+            HEXAGON_BUILDTYPE := EXPERIMENTAL
         else
-            # Remove leading dash from LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
-            # Add leading dash to LINEAGE_EXTRAVERSION
-            LINEAGE_EXTRAVERSION := -$(LINEAGE_EXTRAVERSION)
+            # Remove leading dash from HEXAGON_EXTRAVERSION
+            HEXAGON_EXTRAVERSION := $(shell echo $(HEXAGON_EXTRAVERSION) | sed 's/-//')
+            # Add leading dash to HEXAGON_EXTRAVERSION
+            HEXAGON_EXTRAVERSION := -$(HEXAGON_EXTRAVERSION)
         endif
     endif
 else
-    # If LINEAGE_BUILDTYPE is not defined, set to UNOFFICIAL
-    LINEAGE_BUILDTYPE := UNOFFICIAL
-    LINEAGE_EXTRAVERSION :=
+    # If HEXAGON_BUILDTYPE is not defined, set to UNOFFICIAL
+    HEXAGON_BUILDTYPE := UNOFFICIAL
+    HEXAGON_EXTRAVERSION :=
 endif
 
-ifeq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
+ifeq ($(HEXAGON_BUILDTYPE), UNOFFICIAL)
     ifneq ($(TARGET_UNOFFICIAL_BUILD_ID),)
-        LINEAGE_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
+        HEXAGON_EXTRAVERSION := -$(TARGET_UNOFFICIAL_BUILD_ID)
     endif
 endif
 
-ifeq ($(LINEAGE_BUILDTYPE), RELEASE)
+ifeq ($(HEXAGON_BUILDTYPE), RELEASE)
     ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-        LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(LINEAGE_BUILD)
+        HEXAGON_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(hexagon_BUILD)
     else
         ifeq ($(TARGET_BUILD_VARIANT),user)
-            ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
-                LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
+            ifeq ($(HEXAGON_VERSION_MAINTENANCE),0)
+                HEXAGON_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(hexagon_BUILD)
             else
-                LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
+                HEXAGON_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(HEXAGON_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(hexagon_BUILD)
             endif
         else
-            LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(LINEAGE_BUILD)
+            HEXAGON_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(PRODUCT_VERSION_MAINTENANCE)$(PRODUCT_VERSION_DEVICE_SPECIFIC)-$(hexagon_BUILD)
         endif
     endif
 else
-    ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
-        LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+    ifeq ($(HEXAGON_VERSION_MAINTENANCE),0)
+        HEXAGON_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(shell date -u +%Y%m%d)-$(HEXAGON_BUILDTYPE)$(HEXAGON_EXTRAVERSION)-$(hexagon_BUILD)
     else
-        LINEAGE_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d)-$(LINEAGE_BUILDTYPE)$(LINEAGE_EXTRAVERSION)-$(LINEAGE_BUILD)
+        HEXAGON_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(HEXAGON_VERSION_MAINTENANCE)-$(shell date -u +%Y%m%d)-$(HEXAGON_BUILDTYPE)$(HEXAGON_EXTRAVERSION)-$(hexagon_BUILD)
     endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.version=$(LINEAGE_VERSION) \
-    ro.lineage.releasetype=$(LINEAGE_BUILDTYPE) \
-    ro.lineage.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
-    ro.modversion=$(LINEAGE_VERSION) \
-    ro.lineagelegal.url=https://lineageos.org/legal
+    ro.hexagon.version=$(HEXAGON_VERSION) \
+    ro.hexagon.releasetype=$(HEXAGON_BUILDTYPE) \
+    ro.hexagon.build.version=$(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR) \
+    ro.modversion=$(HEXAGON_VERSION) \
+    ro.hexagonlegal.url=https://hexagonos.org/legal
 
 PRODUCT_EXTRA_RECOVERY_KEYS += \
-    vendor/lineage/build/target/product/security/lineage
+    vendor/hexagon/build/target/product/security/hexagon
 
--include vendor/lineage-priv/keys/keys.mk
+-include vendor/hexagon-priv/keys/keys.mk
 
-LINEAGE_DISPLAY_VERSION := $(LINEAGE_VERSION)
+HEXAGON_DISPLAY_VERSION := $(HEXAGON_VERSION)
 
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
 ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
-    ifneq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
+    ifneq ($(HEXAGON_BUILDTYPE), UNOFFICIAL)
         ifndef TARGET_VENDOR_RELEASE_BUILD_ID
-            ifneq ($(LINEAGE_EXTRAVERSION),)
-                # Remove leading dash from LINEAGE_EXTRAVERSION
-                LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
-                TARGET_VENDOR_RELEASE_BUILD_ID := $(LINEAGE_EXTRAVERSION)
+            ifneq ($(HEXAGON_EXTRAVERSION),)
+                # Remove leading dash from HEXAGON_EXTRAVERSION
+                HEXAGON_EXTRAVERSION := $(shell echo $(HEXAGON_EXTRAVERSION) | sed 's/-//')
+                TARGET_VENDOR_RELEASE_BUILD_ID := $(HEXAGON_EXTRAVERSION)
             else
                 TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date -u +%Y%m%d)
             endif
         else
             TARGET_VENDOR_RELEASE_BUILD_ID := $(TARGET_VENDOR_RELEASE_BUILD_ID)
         endif
-        ifeq ($(LINEAGE_VERSION_MAINTENANCE),0)
-            LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
+        ifeq ($(HEXAGON_VERSION_MAINTENANCE),0)
+            HEXAGON_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(hexagon_BUILD)
         else
-            LINEAGE_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(LINEAGE_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(LINEAGE_BUILD)
+            HEXAGON_DISPLAY_VERSION := $(PRODUCT_VERSION_MAJOR).$(PRODUCT_VERSION_MINOR).$(HEXAGON_VERSION_MAINTENANCE)-$(TARGET_VENDOR_RELEASE_BUILD_ID)-$(hexagon_BUILD)
         endif
     endif
 endif
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.lineage.display.version=$(LINEAGE_DISPLAY_VERSION)
+    ro.hexagon.display.version=$(HEXAGON_DISPLAY_VERSION)
 
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/lineage/config/partner_gms.mk
+-include vendor/hexagon/config/partner_gms.mk
 -include vendor/cyngn/product.mk
 
 $(call prepend-product-if-exists, vendor/extra/product.mk)
