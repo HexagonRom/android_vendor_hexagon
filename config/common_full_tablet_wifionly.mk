@@ -1,2 +1,2 @@
-# Inherit full common PixelExperience stuff
-$(call inherit-product, vendor/aosp/config/common_full.mk)
+# Inherit full common HexagonRom stuff
+$(call inherit-product, vendor/hexagon/config/common_full.mk)

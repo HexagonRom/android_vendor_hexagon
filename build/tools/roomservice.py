@@ -43,11 +43,11 @@ except ImportError:
 DEBUG = False
 default_manifest = ".repo/manifest.xml"
 
-custom_local_manifest = ".repo/local_manifests/pixel.xml"
+custom_local_manifest = ".repo/local_manifests/hexagon.xml"
 custom_default_revision = "pie"
-custom_dependencies = "aosp.dependencies"
-org_manifest = "pixel-devices"  # leave empty if org is provided in manifest
-org_display = "PixelExperience-Devices"  # needed for displaying
+custom_dependencies = "hexagon.dependencies"
+org_manifest = "hexagon-devices"  # leave empty if org is provided in manifest
+org_display = "HexagonRom-Devices"  # needed for displaying
 
 github_auth = None
 

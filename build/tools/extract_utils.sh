@@ -2,6 +2,7 @@
 #
 # Copyright (C) 2016 The CyanogenMod Project
 #           (C) 2018 The PixelExperience Project
+#           (C) 2018 The HexagonRom Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -547,20 +548,20 @@ function write_header() {
         fi
         if [ $YEAR -eq 2017 ]; then
             printf "# Copyright (C) 2017 The LineageOS Project\n" >> $1
-            printf "# Copyright (C) 2017 The PixelExperience Project\n" >> $1
+            printf "# Copyright (C) 2017 The HexagonRom Project\n" >> $1
         elif [ $INITIAL_COPYRIGHT_YEAR -eq $YEAR ]; then
             printf "# Copyright (C) $YEAR The LineageOS Project\n" >> $1
-            printf "# Copyright (C) $YEAR The PixelExperience Project\n" >> $1
+            printf "# Copyright (C) $YEAR The HexagonRom Project\n" >> $1
         elif [ $INITIAL_COPYRIGHT_YEAR -le 2017 ]; then
             printf "# Copyright (C) 2017-$YEAR The LineageOS Project\n" >> $1
-            printf "# Copyright (C) 2017-$YEAR The PixelExperience Project\n" >> $1
+            printf "# Copyright (C) 2017-$YEAR The HexagonRom Project\n" >> $1
         else
             printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR The LineageOS Project\n" >> $1
-            printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR The PixelExperience Project\n" >> $1
+            printf "# Copyright (C) $INITIAL_COPYRIGHT_YEAR-$YEAR The HexagonRom Project\n" >> $1
         fi
     else
         printf "# Copyright (C) $YEAR The LineageOS Project\n" > $1
-        printf "# Copyright (C) $YEAR The PixelExperience Project\n" > $1
+        printf "# Copyright (C) $YEAR The HexagonRom Project\n" > $1
     fi
 
     cat << EOF >> $1
@@ -785,16 +786,16 @@ function oat2dex() {
     local HOST="$(uname)"
 
     if [ -z "$BAKSMALIJAR" ] || [ -z "$SMALIJAR" ]; then
-        export BAKSMALIJAR="$AOSP_ROOT"/vendor/aosp/build/tools/smali/baksmali.jar
-        export SMALIJAR="$AOSP_ROOT"/vendor/aosp/build/tools/smali/smali.jar
+        export BAKSMALIJAR="$AOSP_ROOT"/vendor/hexagon/build/tools/smali/baksmali.jar
+        export SMALIJAR="$AOSP_ROOT"/vendor/hexagon/build/tools/smali/smali.jar
     fi
 
     if [ -z "$VDEXEXTRACTOR" ]; then
-        export VDEXEXTRACTOR="$AOSP_ROOT"/vendor/aosp/build/tools/"$HOST"/vdexExtractor
+        export VDEXEXTRACTOR="$AOSP_ROOT"/vendor/hexagon/build/tools/"$HOST"/vdexExtractor
     fi
 
     if [ -z "$CDEXCONVERTER" ]; then
-        export CDEXCONVERTER="$AOSP_ROOT"/vendor/aosp/build/tools/"$HOST"/compact_dex_converter
+        export CDEXCONVERTER="$AOSP_ROOT"/vendor/hexagon/build/tools/"$HOST"/compact_dex_converter
     fi
 
     # Extract existing boot.oats to the temp folder
@@ -971,7 +972,7 @@ function extract() {
             # If OTA is block based, extract it.
             elif [ -a "$DUMPDIR"/system.new.dat ]; then
                 echo "Converting system.new.dat to system.img"
-                python "$AOSP_ROOT"/vendor/aosp/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
+                python "$AOSP_ROOT"/vendor/hexagon/build/tools/sdat2img.py "$DUMPDIR"/system.transfer.list "$DUMPDIR"/system.new.dat "$DUMPDIR"/system.img 2>&1
                 rm -rf "$DUMPDIR"/system.new.dat "$DUMPDIR"/system
                 mkdir "$DUMPDIR"/system "$DUMPDIR"/tmp
                 echo "Requesting sudo access to mount the system.img"
