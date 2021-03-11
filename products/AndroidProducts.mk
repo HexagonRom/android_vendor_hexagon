@@ -48,7 +48,6 @@ PRODUCT_MAKEFILES := \
     $(LOCAL_DIR)/honami.mk \
     $(LOCAL_DIR)/huashan.mk \
     $(LOCAL_DIR)/hltetmo.mk \
-    $(LOCAL_DIR)/i9300.mk \
     $(LOCAL_DIR)/i9305.mk \
     $(LOCAL_DIR)/jewel.mk \
     $(LOCAL_DIR)/j5ltexx.mk \
